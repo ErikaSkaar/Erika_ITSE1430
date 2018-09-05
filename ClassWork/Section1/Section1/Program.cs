@@ -14,7 +14,7 @@ namespace Section1
             do
             { 
                 notQuit = DisplayMenu();
-            } while (notQuit);
+            } while (notQuit); 
 
             //PlayWithStrings();
     }
