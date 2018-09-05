@@ -8,13 +8,13 @@ namespace Section1
 {
     class Program
     {
-        static void Main( string[] args )
+        static void Main( string[] args ) 
         {
             bool notQuit;
             do
             { 
                 notQuit = DisplayMenu();
-            } while (notQuit); 
+            } while (notQuit);
 
             //PlayWithStrings();
     }
