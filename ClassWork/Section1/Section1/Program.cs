@@ -89,6 +89,25 @@ namespace Section1
 
         }
 
+        private static void PlayWithArrays()
+        {
+           // Console.WriteLine("How Many Names?"); no longer need this with the helper funcation at the bottom   -V
+            int count = ReadInt32("how many names? ", 1);
+
+            string[] names = new string[count];
+            for (int index = 0; index < count; ++index)
+            {
+                Console.WriteLine("Name?");
+                names[index] = Console.ReadLine();
+            };
+
+            for (int index = 0; index < count; ++index)
+            {
+                Console.WriteLine(names[index]);
+            };
+        }
+
+
         private static bool DisplayMenu()
         {
             while (true)
@@ -142,6 +161,23 @@ namespace Section1
         private static void AddMovie()
         {
             Console.WriteLine("AddMovie");
+        }
+
+        private static int ReadInt32 (string message, int minValue)
+        {
+            while (true)
+            { 
+            Console.WriteLine(message);
+            string input = Console.ReadLine();
+
+            if(Int32.TryParse(input, out int result))
+            {
+                if (result >= minValue)
+                    return result;
+            };
+
+            Console.WriteLine($"You must enter an interger vaue >= {minValue}");
+            };
         }
     }
 }
