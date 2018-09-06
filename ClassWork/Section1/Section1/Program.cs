@@ -100,10 +100,15 @@ namespace Section1
                 Console.WriteLine("Name?");
                 names[index] = Console.ReadLine();
             };
-
-            for (int index = 0; index < count; ++index)
+            foreach (string name in names) //the equivalent to a while loop and can be used instead of for loop
+           // for (int index = 0; index < names.Length; ++index) //change count to name.Length--> int , not a function
             {
-                Console.WriteLine(names[index]);
+                //read only - not allowed
+                //name = "";
+                string str = name;
+                str = "";
+                //Console.WriteLine(names[index]); //taking out index
+                Console.WriteLine(name); //this is not exactly equivalent to a for loop just keep in mind
             };
         }
 
@@ -160,7 +165,10 @@ namespace Section1
 
         private static void AddMovie()
         {
-            Console.WriteLine("AddMovie");
+             name = ReadString("Enter a name: ", true);
+             description = ReadString("Enter a descritption: ");
+             runLength = ReadInt32("Enter a length (in minute): ", 0);
+
         }
 
         private static int ReadInt32 (string message, int minValue)
@@ -179,5 +187,30 @@ namespace Section1
             Console.WriteLine($"You must enter an interger vaue >= {minValue}");
             };
         }
+
+        private static string ReadString ( string message )
+        {
+            return ReadString(message, false);
+
+        }
+        private static string ReadString( string message, bool required )
+        {
+            while (true)
+            {
+                Console.WriteLine(message);
+                string input = Console.ReadLine();
+
+                if (!String.IsNullOrEmpty(input) || !required)
+                    return input;
+
+                Console.WriteLine("You must enter a value");
+            };
+        }
+
+        //A movie
+        static string name;
+        static string description;
+        static int runLength;
+        //static DateTime releaseDate;
     }
 }
