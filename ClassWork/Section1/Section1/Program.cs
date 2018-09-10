@@ -1,59 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+ * ITSE 1430
+ * Sample implementation
+ */
+using System;
 
 namespace Section1
 {
     class Program
     {
-        static void Main( string[] args ) 
+        static void Main( string[] args )
         {
             bool notQuit;
             do
-            { 
+            {
                 notQuit = DisplayMenu();
             } while (notQuit);
-
-         
         }
-
-       
-
-      
-
 
         private static bool DisplayMenu()
         {
             while (true)
-            { 
-            Console.WriteLine("A)ddMovie");
-            Console.WriteLine("E)ditMovie");
-            Console.WriteLine("D)eleteMovie");
-            Console.WriteLine("V)eiwMovies");
-            Console.WriteLine("Q)uit");
+            {
+                Console.WriteLine("A)ddMovie");
+                Console.WriteLine("E)ditMovie");
+                Console.WriteLine("D)eleteMovie");
+                Console.WriteLine("V)eiwMovies");
+                Console.WriteLine("Q)uit");
 
-            string input = Console.ReadLine();
+                string input = Console.ReadLine();
                 switch (input[0])
 
                 {
                     case 'a':
-                    case 'A': AddMovie(); return true;
-                    
+                    case 'A':
+                    AddMovie();
+                    return true;
+
                     case 'e':
-                    case 'E': EditMovie(); return true;
-                                
+                    case 'E':
+                    EditMovie();
+                    return true;
+
                     case 'd':
-                    case 'D': DeleteMovie(); return true;
-                    
+                    case 'D':
+                    DeleteMovie();
+                    return true;
+
                     case 'v':
-                    case 'V': VeiwMovie(); return true;
+                    case 'V':
+                    VeiwMovie();
+                    return true;
 
                     case 'q':
-                    case 'Q': return false;
+                    case 'Q':
+                    return false;
 
-                    default: Console.WriteLine("Please enter a valid value"); break; //break; = breaking out of the switch statment
+                    default:
+                    Console.WriteLine("Please enter a valid value");
+                    break; //break; = breaking out of the switch statment
                 };
 
             };
@@ -61,45 +65,98 @@ namespace Section1
 
         private static void VeiwMovie()
         {
-            Console.WriteLine("VeiwMovie");
+            if (String.IsNullOrEmpty(name))
+            {
+                Console.WriteLine("No Movies Availble");
+                return; //returns to display menu
+            };
+
+            Console.WriteLine(name);
+
+            if (!String.IsNullOrEmpty(description))
+                Console.WriteLine(description);
+
+            Console.WriteLine($"Run Length = {runLength} (mins)"); //string concatination
         }
 
         private static void DeleteMovie()
         {
-            Console.WriteLine("DeleteMovie");
+            if (Confirm("Are you sure you wanna do this?"))
+            {
+                //"delete" the movie
+                name = null;
+                description = null;
+                runLength = 0;
+            };
+        }
+        private static bool Confirm( string message )
+        {
+            Console.WriteLine($" {message} (Y/N)");
+
+            do
+            {
+
+                ConsoleKeyInfo key = Console.ReadKey(true);
+                switch (key.KeyChar)
+                {
+                    case 'Y':
+                    case 'y':
+                    return true;
+
+                    case 'N':
+                    case 'n':
+                    return false;
+                };
+            } while (true);
+            //if (key.KeyChar == 'Y')
+            //  return true;
+            //else if (key.KeyChar == 'N')
+            //return false;
         }
 
         private static void EditMovie()
         {
-            Console.WriteLine("EditMovie");
+            VeiwMovie();
+            //added var for type infrencing telling th ecompiler to go figure the type out, insted of tping out string, int, etc.
+            var newName = ReadString("Enter a name (or press ENTER for default): ", false);
+            if (!String.IsNullOrEmpty(newName))
+                name = newName;
+
+            var newDescription = ReadString("Enter a descritption (or press ENTER for default): ");
+            if (!String.IsNullOrEmpty(newDescription))
+                description = newDescription;
+
+            var newLength = ReadInt32("Enter a length (in minutes) (or press ENTER for default): ", 0); 
+            if (newLength > 0)
+                runLength = newLength;
         }
 
         private static void AddMovie()
         {
-             name = ReadString("Enter a name: ", true);
-             description = ReadString("Enter a descritption: ");
-             runLength = ReadInt32("Enter a length (in minute): ", 0);
+            name = ReadString("Enter a name: ", true);
+            description = ReadString("Enter a descritption: ");
+            runLength = ReadInt32("Enter a length (in minute): ", 0);
 
         }
 
-        private static int ReadInt32 (string message, int minValue)
+        private static int ReadInt32( string message, int minValue )
         {
             while (true)
-            { 
-            Console.WriteLine(message);
-            string input = Console.ReadLine();
-
-            if(Int32.TryParse(input, out int result))
             {
-                if (result >= minValue)
-                    return result;
-            };
+                Console.WriteLine(message);
+                var input = Console.ReadLine(); //change string to var
 
-            Console.WriteLine($"You must enter an interger vaue >= {minValue}");
+                if (Int32.TryParse(input, out var result)) //change int to var
+                {
+                    if (result >= minValue)
+                        return result;
+                };
+
+                Console.WriteLine($"You must enter an interger vaue >= {minValue}");
             };
         }
 
-        private static string ReadString ( string message )
+        private static string ReadString( string message )
         {
             return ReadString(message, false);
 
