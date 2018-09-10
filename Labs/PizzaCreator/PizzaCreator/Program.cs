@@ -10,38 +10,27 @@ namespace PizzaCreator
     {
         static void Main(string[] args)
         {
-            DisplayMenu();
-
             bool unlessQuit;
-
             do
             {
                 unlessQuit = DisplayMenu();
             } while (unlessQuit);
+
+
         }
-    }
-}
 
-private static bool DisplayMenu()
-{
-    while (true)
-    {
-        Console.WriteLine("N)ewOrder");
-        Console.WriteLine("M)odifyOrder");
-        Console.WriteLine("D)isplayorder");
-        Console.WriteLine("Q)uit");
-
-        string input = Console.ReadLine();
-
-        switch (input[0])
+        private static bool DisplayMenu()
         {
-            case 'N': NewOrder(); break;
-            case 'M': ModifyOrder(); break;
-            case 'D': DisplayOrder(); break;
-            case 'Q':; break;
-            default:
-                Console.WriteLine("Please enter a valid value"); break;
+            while (true)
+            {
+                Console.WriteLine("N)ew Order");
+                Console.WriteLine("M)odify Order");
+                Console.WriteLine("D)isplay Order");
+                Console.WriteLine("Q)uit");
+
+                string input = Console.ReadLine();
                 switch (input[0])
+
                 {
                     case 'n':
                     case 'N': NewOrder(); return true;
@@ -50,12 +39,53 @@ private static bool DisplayMenu()
                     case 'M': ModifyOrder(); return true;
 
                     case 'd':
-                    case 'D': DispalyMenu(); return true;
+                    case 'D': DisplayOrder(); return true;
 
                     case 'q':
                     case 'Q': return false;
-                    default: Console.WriteLine("Please enter a valid value"); break; //break; = breaking out of the switch statment
+
+                    default: Console.WriteLine("Please enter a valid value"); break;
                 };
-        };
-    }
+
+            };
+        }
+
+        private static void NewOrder()
+        {
+            newOrder = ReadString("Enter a size: (S)mall $5.00, (M)edium $6.25, (L)arge $8.75 ", true);
+
+
+
+                    //description = ReadString("Enter a descritption: ");
+                    //runLength = ReadInt32("Enter a length (in minute): ", 0);
+        }
+
+        private static void ModifyOrder()
+        {
+            Console.WriteLine("Modify Your Order");
+        }
+
+        private static void DisplayOrder()
+        {
+            Console.WriteLine("Your current total order");
+        }
+
+        private static string ReadString(string message, bool required)
+        {
+            while (true)
+            {
+                Console.WriteLine(message);
+                string input = Console.ReadLine();
+
+                if (!String.IsNullOrEmpty(input) || !required)
+                    return input;
+
+                Console.WriteLine("Please enter a value");
+            };
+        }
+
+        // from movie creator used for adding movie
+        static string newOrder;
+       
+    }  
 }
