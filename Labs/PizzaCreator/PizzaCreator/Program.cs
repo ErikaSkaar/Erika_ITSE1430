@@ -52,46 +52,44 @@ namespace PizzaCreator
 
         private static void NewOrder()
         {
-            Console.WriteLine("EPlease choose from the following menu options");
-
-            var pizzaSize = Console.ReadLine();
-
-            switch (pizzaSize[0])
-
-            {
-                case 'n':
-                case 'N': NewOrder(); return true;
-
-                case 'm':
-                case 'M': ModifyOrder(); return true;
-
-                case 'd':
-                case 'D': DisplayOrder(); return true;
-
-                case 'q':
-                case 'Q': return false;
-
-                default: Console.WriteLine("Please enter a valid value"); break;
-            };
-
-
-
-            // total = size + meats + Veggies + sauce + cheese + delivery;
-
-
-            // Console.WriteLine($"Total cost of order {total}");
-
+            Console.WriteLine("Please choose from the following menu options");
+            
         }
+
+            
+
+        
 
         private static void ModifyOrder()
         {
             Console.WriteLine("Modify Your Order");
             {
                 DisplayOrder();
-                //added var for type infrencing telling th ecompiler to go figure the type out, insted of tping out string, int, etc.
-                var newPizza = ReadString("Choose new size (or press ENTER for previous choice): ", );
-                if (!String.IsNullOrEmpty(newPizza))
-                    pizzaSize = newPizza;
+                if (String.IsNullOrEmpty(size))
+                {
+                    return; //returns to display menu
+                };
+
+                var newSize = ReadString("Choose new size (or press ENTER for previous choice): " , false);
+                if (!String.IsNullOrEmpty(newSize))
+                    size = newSize;
+                var newSize = ReadString("Choose new size (or press ENTER for previous choice): ", false);
+                if (!String.IsNullOrEmpty(newSize))
+                    size = newSize;
+                var newSize = ReadString("Choose new size (or press ENTER for previous choice): ", false);
+                if (!String.IsNullOrEmpty(newSize))
+                    size = newSize;
+                var newSize = ReadString("Choose new size (or press ENTER for previous choice): ", false);
+                if (!String.IsNullOrEmpty(newSize))
+                    size = newSize;
+                var newSize = ReadString("Choose new size (or press ENTER for previous choice): ", false);
+                if (!String.IsNullOrEmpty(newSize))
+                    size = newSize;
+                var newSize = ReadString("Choose new size (or press ENTER for previous choice): ", false);
+                if (!String.IsNullOrEmpty(newSize))
+                    size = newSize;
+
+
 
             }
 
@@ -99,11 +97,11 @@ namespace PizzaCreator
 
         private static void DisplayOrder()
         {
-            Console.WriteLine("Your current total order");
+            Console.WriteLine("Your current total order: \n");
             {
-                if (String.IsNullOrEmpty(pizza))
+                if (String.IsNullOrEmpty(size))
                 {
-                    Console.WriteLine("No Order Availble");
+                    Console.WriteLine("There is no created order\n");
                     return; //returns to display menu
                 };
                 
@@ -125,7 +123,7 @@ namespace PizzaCreator
             };
         }
 
-        static string pizza;
+        static string size;
         
     }  
 }
