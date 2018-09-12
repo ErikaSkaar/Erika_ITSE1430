@@ -52,22 +52,63 @@ namespace PizzaCreator
 
         private static void NewOrder()
         {
-            newOrder = ReadString("Enter a size: (S)mall $5.00, (M)edium $6.25, (L)arge $8.75 ", true);
+            Console.WriteLine("EPlease choose from the following menu options");
+
+            var pizzaSize = Console.ReadLine();
+
+            switch (pizzaSize[0])
+
+            {
+                case 'n':
+                case 'N': NewOrder(); return true;
+
+                case 'm':
+                case 'M': ModifyOrder(); return true;
+
+                case 'd':
+                case 'D': DisplayOrder(); return true;
+
+                case 'q':
+                case 'Q': return false;
+
+                default: Console.WriteLine("Please enter a valid value"); break;
+            };
 
 
 
-                    //description = ReadString("Enter a descritption: ");
-                    //runLength = ReadInt32("Enter a length (in minute): ", 0);
+            // total = size + meats + Veggies + sauce + cheese + delivery;
+
+
+            // Console.WriteLine($"Total cost of order {total}");
+
         }
 
         private static void ModifyOrder()
         {
             Console.WriteLine("Modify Your Order");
+            {
+                DisplayOrder();
+                //added var for type infrencing telling th ecompiler to go figure the type out, insted of tping out string, int, etc.
+                var newPizza = ReadString("Choose new size (or press ENTER for previous choice): ", );
+                if (!String.IsNullOrEmpty(newPizza))
+                    pizzaSize = newPizza;
+
+            }
+
         }
 
         private static void DisplayOrder()
         {
             Console.WriteLine("Your current total order");
+            {
+                if (String.IsNullOrEmpty(pizza))
+                {
+                    Console.WriteLine("No Order Availble");
+                    return; //returns to display menu
+                };
+                
+            }
+
         }
 
         private static string ReadString(string message, bool required)
@@ -84,8 +125,7 @@ namespace PizzaCreator
             };
         }
 
-        // from movie creator used for adding movie
-        static string newOrder;
-       
+        static string pizza;
+        
     }  
 }
