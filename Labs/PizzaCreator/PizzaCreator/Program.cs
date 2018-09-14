@@ -52,13 +52,38 @@ namespace PizzaCreator
 
         private static void NewOrder()
         {
-            Console.WriteLine("Please choose from the following menu options");
-            
+            { 
+            double sizeCost = 0;
+            int size = Console.ReadLine("Please enter 1 = Small, 2 = Medium, 3 = Large", size);
+
+            if (size == 1)
+            {
+                sizeCost = 5.00;
+                Console.WriteLine("Small Pizza : $", sizeCost);
+            }
+
+            else if (size == 2)
+            {
+                sizeCost = 6.25;
+                Console.WriteLine("Medium Pizza : $", sizeCost);
+            }
+
+            else if (size == 3)
+            {
+                sizeCost = 8.75;
+                Console.WriteLine("Large Pizza : $", sizeCost);
+            }
+
+            else
+            {
+                Console.WriteLine("Please enter valid input");
+            }
+
+            double total = sizeCost;
+            Console.WriteLine("Your cart total: $");
+            };
+
         }
-
-            
-
-        
 
         private static void ModifyOrder()
         {
@@ -73,21 +98,8 @@ namespace PizzaCreator
                 var newSize = ReadString("Choose new size (or press ENTER for previous choice): " , false);
                 if (!String.IsNullOrEmpty(newSize))
                     size = newSize;
-                var newSize = ReadString("Choose new size (or press ENTER for previous choice): ", false);
-                if (!String.IsNullOrEmpty(newSize))
-                    size = newSize;
-                var newSize = ReadString("Choose new size (or press ENTER for previous choice): ", false);
-                if (!String.IsNullOrEmpty(newSize))
-                    size = newSize;
-                var newSize = ReadString("Choose new size (or press ENTER for previous choice): ", false);
-                if (!String.IsNullOrEmpty(newSize))
-                    size = newSize;
-                var newSize = ReadString("Choose new size (or press ENTER for previous choice): ", false);
-                if (!String.IsNullOrEmpty(newSize))
-                    size = newSize;
-                var newSize = ReadString("Choose new size (or press ENTER for previous choice): ", false);
-                if (!String.IsNullOrEmpty(newSize))
-                    size = newSize;
+                
+
 
 
 
