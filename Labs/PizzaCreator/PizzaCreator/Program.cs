@@ -54,21 +54,22 @@ namespace PizzaCreator
         {
             { 
             double sizeCost = 0;
-            int size = Console.ReadLine("Please enter 1 = Small, 2 = Medium, 3 = Large", size);
 
-            if (size == 1)
+             string size = Console.ReadLine("Please enter 1 = Small, 2 = Medium, 3 = Large");
+
+            if (sizeCost == 1)
             {
                 sizeCost = 5.00;
                 Console.WriteLine("Small Pizza : $", sizeCost);
             }
 
-            else if (size == 2)
+            else if (sizeCost == 2)
             {
                 sizeCost = 6.25;
                 Console.WriteLine("Medium Pizza : $", sizeCost);
             }
 
-            else if (size == 3)
+            else if (sizeCost == 3)
             {
                 sizeCost = 8.75;
                 Console.WriteLine("Large Pizza : $", sizeCost);
@@ -80,9 +81,28 @@ namespace PizzaCreator
             }
 
             double total = sizeCost;
-            Console.WriteLine("Your cart total: $");
+            Console.WriteLine("Your cart total: $", sizeCost);
             };
 
+            {
+                double meats = 0;
+            }
+
+            {
+                double veggies = 0;
+            }
+
+            {
+                double sauce = 0;
+            }
+
+            {
+                double cheese = 0;
+            }
+
+            {
+                //delivery
+            }
         }
 
         private static void ModifyOrder()
@@ -98,11 +118,26 @@ namespace PizzaCreator
                 var newSize = ReadString("Choose new size (or press ENTER for previous choice): " , false);
                 if (!String.IsNullOrEmpty(newSize))
                     size = newSize;
-                
 
+                var newMeat = ReadString("Choose new meats (or press ENTER for previous choice): ", false);
+                if (!String.IsNullOrEmpty(newMeat))
+                    size = newMeat;
 
+                var newVeggie = ReadString("Choose new veggies (or press ENTER for previous choice): ", false);
+                if (!String.IsNullOrEmpty(newVeggie))
+                    size = newVeggie;
 
+                var newSauce = ReadString("Choose new sauce (or press ENTER for previous choice): ", false);
+                if (!String.IsNullOrEmpty(newSauce))
+                    size = newSauce;
 
+                var newCheese = ReadString("Choose alternate cheese option (or press ENTER for previous choice): ", false);
+                if (!String.IsNullOrEmpty(newCheese))
+                    size = newCheese;
+
+                var newDelivery = ReadString("Choose alternate delivery option (or press ENTER for previous choice): ", false);
+                if (!String.IsNullOrEmpty(newDelivery))
+                    size = newDelivery;
             }
 
         }
@@ -116,9 +151,7 @@ namespace PizzaCreator
                     Console.WriteLine("There is no created order\n");
                     return; //returns to display menu
                 };
-                
             }
-
         }
 
         private static string ReadString(string message, bool required)
