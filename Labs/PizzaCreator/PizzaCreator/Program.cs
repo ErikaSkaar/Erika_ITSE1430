@@ -1,8 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+ * ITSE 1430
+ * Erika Ballering 
+ * Lab 1 - Pizza Creator 
+ */
+
+using System;
 
 namespace PizzaCreator
 {
@@ -13,10 +15,8 @@ namespace PizzaCreator
             bool unlessQuit;
             do
             {
-                unlessQuit = DisplayMenu();
+              unlessQuit = DisplayMenu();
             } while (unlessQuit);
-
-
         }
 
         private static bool DisplayMenu()
@@ -46,62 +46,127 @@ namespace PizzaCreator
 
                     default: Console.WriteLine("Please enter a valid value"); break;
                 };
-
             };
         }
 
         private static void NewOrder()
         {
-            { 
-            double sizeCost = 0;
-
-             string size = Console.ReadLine("Please enter 1 = Small, 2 = Medium, 3 = Large");
-
-            if (sizeCost == 1)
             {
-                sizeCost = 5.00;
-                Console.WriteLine("Small Pizza : $", sizeCost);
-            }
+                Console.WriteLine("Please enter 1 = Small pizza: $5.00, 2 = Medium pizza: $6.25, 3 = Large pizza: $8.75", size);
+                size = Console.ReadLine();
+                double sizeCost = 0.0;
 
-            else if (sizeCost == 2)
-            {
-                sizeCost = 6.25;
-                Console.WriteLine("Medium Pizza : $", sizeCost);
-            }
+                if (size == "1")
+                {
+                    sizeCost = 5.00;
+                    Console.WriteLine("Small pizza selected : $", sizeCost);
+                }
 
-            else if (sizeCost == 3)
-            {
-                sizeCost = 8.75;
-                Console.WriteLine("Large Pizza : $", sizeCost);
-            }
+                else if (size == "2")
+                {
+                    sizeCost = 6.25;
+                    Console.WriteLine("Medium pizza selected : $", sizeCost);
+                }
 
-            else
-            {
-                Console.WriteLine("Please enter valid input");
-            }
+                else if (size == "3")
+                {
+                    sizeCost = 8.75;
+                    Console.WriteLine("Large pizza selected : $", sizeCost);
+                }
 
-            double total = sizeCost;
-            Console.WriteLine("Your cart total: $", sizeCost);
+                else
+                {
+                    Console.WriteLine("Please enter valid input");
+                }
+
+                double total = sizeCost;
+                Console.WriteLine("Your cart total: $", total);
             };
 
             {
-                double meats = 0;
+                // double meats = 0;
             }
 
             {
-                double veggies = 0;
+                // double veggies = 0;
             }
 
             {
-                double sauce = 0;
+                Console.WriteLine("Please enter 1 = Traditional: $.00, 2 = Garlic: $1.00, 3 = Oregano: $1.00", sauce);
+                sauce = Console.ReadLine();
+                double sauceCost = 0.0;
+
+
+                if (sauce == "1")
+                {
+                    sauceCost = 5.00;
+                    Console.WriteLine("Traditional sauce selected : $", sauceCost);
+                }
+
+                else if (sauce == "2")
+                {
+                    sauceCost = 6.25;
+                    Console.WriteLine("Garlice sauce selected : $", sauceCost);
+                }
+
+                else if (sauce == "3")
+                {
+                    sauceCost = 8.75;
+                    Console.WriteLine("Oregano sauce selected : $", sauceCost);
+                }
+
+                else
+                {
+                    Console.WriteLine("Please enter valid input");
+                }
+
+                Console.WriteLine("Your cart has been updated:\n", sauceCost);
+            };
+
+            {
+                Console.WriteLine("Please slecet 1)Normal cheese: $0.00 2)Extra cheese: $1.25");
+
+                var cheeseCost = 0.0;
+                if (cheese == '1')
+                {
+                    cheeseCost = 0.0;
+                    Console.WriteLine("Normal cheese : $", cheeseCost);
+                }
+                else if (cheese == '2')
+                {
+                    cheeseCost = 1.25;
+                    Console.WriteLine("Extra cheese charge: $", cheeseCost);
+                }
+                else
+                {
+                    Console.WriteLine("Please enter valid input");
+                }
             }
 
             {
-                double cheese = 0;
+                Console.WriteLine("Please slecet 1)Take out: $0.00 2)Delivery: $2.50");
+
+                var deliveryCost = 0.0;
+                if (delivery == '1')
+                {
+                    deliveryCost = 0.00;
+                    Console.WriteLine("Take out : $", deliveryCost);
+                }
+                else if (delivery == '2')
+                {
+                    deliveryCost = 2.50;
+                    Console.WriteLine("Delievery fee : $", deliveryCost);
+                }
+                else
+                {
+                    Console.WriteLine("Please enter valid input");
+                }
             }
 
             {
-                //delivery
+                var total = (size + meats + veggies + sauce + cheese + delivery);
+                Console.WriteLine($"Your total cost : ${total}");
+                return;
             }
         }
 
@@ -112,34 +177,36 @@ namespace PizzaCreator
                 DisplayOrder();
                 if (String.IsNullOrEmpty(size))
                 {
-                    return; //returns to display menu
+                    return; 
                 };
 
-                var newSize = ReadString("Choose new size (or press ENTER for previous choice): " , false);
+                var newSize = ReadString("Choose new size (or press ENTER for previous choice): ", false);
                 if (!String.IsNullOrEmpty(newSize))
                     size = newSize;
 
-                var newMeat = ReadString("Choose new meats (or press ENTER for previous choice): ", false);
-                if (!String.IsNullOrEmpty(newMeat))
-                    size = newMeat;
 
-                var newVeggie = ReadString("Choose new veggies (or press ENTER for previous choice): ", false);
-                if (!String.IsNullOrEmpty(newVeggie))
-                    size = newVeggie;
+                /*
+               var newMeats = ReadString("Choose new meats (or press ENTER for previous choice): ", false);
+                if (!String.IsNullOrEmpty(newMeats))
+                   meats = newMeats;
 
-                var newSauce = ReadString("Choose new sauce (or press ENTER for previous choice): ", false);
+               var newVeggies = ReadString("Choose new veggies (or press ENTER for previous choice): ", false);
+                if (!String.IsNullOrEmpty(newVeggies))
+                   veggies = newVeggies;
+
+               var newSauce = ReadString("Choose new sauce (or press ENTER for previous choice): ", false);
                 if (!String.IsNullOrEmpty(newSauce))
-                    size = newSauce;
+                   sauce = newSauce;
 
                 var newCheese = ReadString("Choose alternate cheese option (or press ENTER for previous choice): ", false);
                 if (!String.IsNullOrEmpty(newCheese))
-                    size = newCheese;
+                    cheese = newCheese;
 
                 var newDelivery = ReadString("Choose alternate delivery option (or press ENTER for previous choice): ", false);
                 if (!String.IsNullOrEmpty(newDelivery))
-                    size = newDelivery;
+                    delivery = newDelivery;
+                */
             }
-
         }
 
         private static void DisplayOrder()
@@ -149,7 +216,7 @@ namespace PizzaCreator
                 if (String.IsNullOrEmpty(size))
                 {
                     Console.WriteLine("There is no created order\n");
-                    return; //returns to display menu
+                    return;
                 };
             }
         }
@@ -161,7 +228,7 @@ namespace PizzaCreator
                 Console.WriteLine(message);
                 string input = Console.ReadLine();
 
-                if (!String.IsNullOrEmpty(input) || !required)
+                if (!string.IsNullOrEmpty(input) || !required)
                     return input;
 
                 Console.WriteLine("Please enter a value");
@@ -169,6 +236,10 @@ namespace PizzaCreator
         }
 
         static string size;
-        
-    }  
+        static string meats;
+        static string veggies;
+        static string sauce;
+        static char cheese;
+        static char delivery;
+    }
 }
