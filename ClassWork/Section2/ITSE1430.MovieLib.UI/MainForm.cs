@@ -17,11 +17,6 @@ namespace ITSE1430.MovieLib.UI
             InitializeComponent();
         }
 
-        private void MainForm_Load( object sender, EventArgs e )
-        {
-
-        }
-
         private void exitToolStripMenuItem_Click( object sender, EventArgs e )
         {
             if (MessageBox.Show("Are you sure you want to exit?", "Close", MessageBoxButtons.YesNo) == DialogResult.No)
@@ -42,7 +37,13 @@ namespace ITSE1430.MovieLib.UI
 
             if (form.ShowDialog(this) == DialogResult.Cancel)
                 return;
-            MessageBox.Show("Adding Movie");
+
+            //MessageBox.Show("Adding Movie");
+             Movie = form.Movie;
+             //Movie.Name = "";
         }
+
+        private Movie Movie;
+
     }
 }

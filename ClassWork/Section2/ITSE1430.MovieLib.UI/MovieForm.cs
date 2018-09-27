@@ -17,6 +17,8 @@ namespace ITSE1430.MovieLib.UI
             InitializeComponent();
         }
 
+        public Movie Movie;
+
         private void OnCancel( object sender, EventArgs e )
         {
             DialogResult = DialogResult.Cancel;
@@ -29,24 +31,24 @@ namespace ITSE1430.MovieLib.UI
 
 
             //Name is required
-            movie.name = _txtName.Text;
+            movie.SetName(_txtName.Text);
             if (String.IsNullOrEmpty(_txtName.Text))
                 return;
 
-            movie.Description = _txtDescription.Text;
+            movie.SetDescription(_txtDescription.Text);
 
             //Release year is numeric, if set
-            movie.ReleaseYear = GetInt32(_txtReleaseYear);
-            if (movie.ReleaseYear < 0)
+            movie.SetReleaseYear(GetInt32(_txtReleaseYear));
+            if (movie.GetReleaseYear() < 0)
                 return;
                
 
             //Run Length, if set
-            movie.RunLength = GetInt32(_txtRunLength);
-            if (movie.RunLength < 0)
+            movie.SetRunLength(GetInt32(_txtRunLength));
+            if (movie.GetRunLength() < 0)
                 return;
 
-
+            Movie = movie;
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -62,9 +64,6 @@ namespace ITSE1430.MovieLib.UI
             return -1;
         }
 
-        private void MovieForm_Load( object sender, EventArgs e )
-        {
 
-        }
     }
 }
