@@ -8,48 +8,34 @@ namespace ITSE1430.MovieLib
 {
     public class Movie
     {
-        public string GetName()
+        public string Name
         {
-            return _name ?? "";
-        }
-        public void SetName( string value )
-        {
-            _name = value;
+            get { return _name ?? ""; } //has implicit syntax of -->string get ()
+            set { _name = value; } // void set ( string value ) 
         }
         private string _name;
-        //this maps to ->  public System.String Name;
+                                                  //this maps to ->  public System.String Name;
 
-        public string GetDescription()
+            public string Description
         {
-            return _description ?? "";
-        }
-        public void SetDescription( string value )
-        {
-            _description = value;
+            get { return _description ?? ""; }
+            set { _description = value; }
         }
         private string _description;
 
-        public int GetReleaseYear()
-        {
-            return _releaseYear;
-        }
-        public void SetReleaseYear( int value )
-        {
-            if (value >= 1900)
-            _releaseYear = value;
-        }
-        private int _releaseYear;
+        public int ReleaseYear { get; set; } = 1900;
+        //{
+        //    get { return _releaseYear; }
+        //    set
+        //    {   
+        //        if (value >= 1900)
+        //        _releaseYear = value;
+        //    }
+        //}
+        //private int _releaseYear = 1900;
 
-        public int GetRunLength()
-        {
-            return _runLength;
-        }
-        public void SetRunLength( int value )
-        {
-            if (value >= 0)
-            _runLength = value;
-        }
-        private int _runLength;
+        public int RunLength { get; set; } //auto property syntax
+        //private int _runLength; no longer needed due to the auto property
 
         /*void Foo()
         {
@@ -58,5 +44,13 @@ namespace ITSE1430.MovieLib
             var isLong = x > 100;
 
         }*/
+
+            //showing mixed accessibilty
+        public int Id { get; private set; }
+
+        public bool IsColor //calculated property
+        {
+            get { return ReleaseYear > 1940; }
+        }
     }
 }
