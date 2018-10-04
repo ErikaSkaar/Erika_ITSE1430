@@ -52,5 +52,7 @@ namespace ITSE1430.MovieLib
         {
             get { return ReleaseYear > 1940; }
         }
+
+        public bool IsOwned { get;set; }
     }
 }
