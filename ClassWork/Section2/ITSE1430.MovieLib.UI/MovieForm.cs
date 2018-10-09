@@ -19,6 +19,7 @@ namespace ITSE1430.MovieLib.UI
 
         public Movie Movie { get; set; }
 
+        #region Event Handlers 
         private void OnCancel( object sender, EventArgs e )
         {
             DialogResult = DialogResult.Cancel;
@@ -28,7 +29,6 @@ namespace ITSE1430.MovieLib.UI
         private void OnSave( object sender, EventArgs e )
         {
             var movie = new Movie();
-
 
             //Name is required
             movie.Name = _txtName.Text;
@@ -55,6 +55,7 @@ namespace ITSE1430.MovieLib.UI
             DialogResult = DialogResult.OK;
             Close();
         }
+        #endregion
 
         private int GetInt32 (TextBox textBox )
         {

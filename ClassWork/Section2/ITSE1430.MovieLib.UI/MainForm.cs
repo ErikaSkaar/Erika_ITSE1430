@@ -12,10 +12,13 @@ namespace ITSE1430.MovieLib.UI
 {
     public partial class MainForm : Form
     {
+        #region Consruction
+
         public MainForm()
         {
             InitializeComponent();
         }
+        #endregion
 
         private void exitToolStripMenuItem_Click( object sender, EventArgs e )
         {
@@ -44,12 +47,23 @@ namespace ITSE1430.MovieLib.UI
 
         private MovieDatabase _database = new MovieDatabase();
 
-        private void MainForm_Load( object sender, EventArgs e )
+        //This method can be overridden in a derived type
+        protected virtual void SomeFunction ()
+        { }
+
+        //this method that MUST BE defined in a drived type 
+        //protected abstract void SomeAbsractfunction();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnLoad( EventArgs e )
         {
+            base.OnLoad(e);
+
             _listMovies.DisplayMember = "Name";
-                RefreshMovies();
-            //var movies = _database.GetAll();
-            //_listMovies.Items.AddRange(movies);
+            RefreshMovies();
         }
 
         private void RefreshMovies ()
@@ -64,17 +78,18 @@ namespace ITSE1430.MovieLib.UI
         {
             return _listMovies.SelectedItem as Movie;
         }
+
         private void OnMovieDelete( object sender, EventArgs e )
         {
-            var item = GetSelectedMovie();
-            if (item == null)
-                return;
-
-            _database.Remove(item.Name);
-            RefreshMovies();
+            DeleteMovie();
         }
 
         private void OnMovieEdit( object sender, EventArgs e )
+        {
+            EditMovie();
+        }
+
+        private void EditMovie ()
         {
             var item = GetSelectedMovie();
             if (item == null)
@@ -87,6 +102,29 @@ namespace ITSE1430.MovieLib.UI
 
             _database.Edit(item.Name, form.Movie);
             RefreshMovies();
+        }
+
+        private void OnMovieDoubleClick( object sender, EventArgs e )
+        {
+            EditMovie();
+        }
+
+        private void DeleteMovie()
+        {
+            var item = GetSelectedMovie();
+            if (item == null)
+                return;
+
+            _database.Remove(item.Name);
+            RefreshMovies();
+        }
+
+        private void OnListKeyUp( object sender, KeyEventArgs e )
+        {
+            if (e.KeyData == Keys.Delete)
+            {
+                DeleteMovie();
+            };
         }
     }
 }
