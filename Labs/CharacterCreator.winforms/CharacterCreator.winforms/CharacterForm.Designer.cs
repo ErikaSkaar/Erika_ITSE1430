@@ -231,30 +231,30 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(264, 163);
+            this.textBox2.Location = new System.Drawing.Point(248, 163);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(78, 20);
+            this.textBox2.Size = new System.Drawing.Size(70, 20);
             this.textBox2.TabIndex = 21;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(367, 163);
+            this.textBox3.Location = new System.Drawing.Point(324, 163);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(79, 20);
+            this.textBox3.Size = new System.Drawing.Size(70, 20);
             this.textBox3.TabIndex = 22;
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(452, 163);
+            this.textBox6.Location = new System.Drawing.Point(400, 163);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(68, 20);
+            this.textBox6.Size = new System.Drawing.Size(70, 20);
             this.textBox6.TabIndex = 23;
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(544, 163);
+            this.textBox7.Location = new System.Drawing.Point(476, 163);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(62, 20);
+            this.textBox7.Size = new System.Drawing.Size(70, 20);
             this.textBox7.TabIndex = 24;
             // 
             // CharacterForm
