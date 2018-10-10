@@ -16,5 +16,22 @@ namespace CharacterCreator.winforms
         {
             InitializeComponent();
         }
+
+        private void OnHelpAbout(object sender, EventArgs e)
+        {
+            MessageBox.Show(this, "Character Creator", "About", MessageBoxButtons.OK);
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Exit?", "End of the Road...", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+            Close();
+        }
+
+        private void OnCharacterAdd(object sender, EventArgs e)
+        {
+
+        }
     }
 }
