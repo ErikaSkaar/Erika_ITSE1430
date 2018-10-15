@@ -8,30 +8,31 @@ namespace ITSE1430.MovieLib
 {
     public class MovieDatabase
     {
-        public MovieDatabase () : this(true)
+        public MovieDatabase() : this(true)
         {
         }
 
-        private static Movie[] GetSeedMovies( bool seed)
+        private static Movie[] GetSeedMovies( bool seed )
         {
             if (!seed)
                 return new Movie[0];
 
-            var movies = new Movie[2];
-
-            movies[0] = new Movie();
-            movies[0].Name= "Jaws";
-            movies[0].RunLength = 120;
-            movies[0].ReleaseYear = 1977;
-
-            movies[1] = new Movie();
-            movies[1].Name = "What About Bob?";
-            movies[1].RunLength = 96;
-            movies[1].ReleaseYear = 2004;
-
-            return movies;
+         return new [] {
+          new Movie()
+            {
+                Name = "Jaws",
+                RunLength = 120,
+                ReleaseYear = 1977
+            },
+           new Movie()
+            {
+                Name = "What About Bob?",
+                RunLength = 96,
+                ReleaseYear = 2004,
+            },
+          };
         }
-        public MovieDatabase (bool seed) : this(GetSeedMovies(seed))
+        public MovieDatabase( bool seed ) : this(GetSeedMovies(seed))
         {
             //if (seed)
             //{
@@ -49,52 +50,38 @@ namespace ITSE1430.MovieLib
             //};
         }
 
-        public MovieDatabase (Movie[] movies)
+        public MovieDatabase( Movie[] movies )
         {
-            for (var index = 0; index < movies.Length; ++index)
-                _movies[index] = movies[index];
+            _items.AddRange(movies);
+            //for (var index = 0; index < movies.Length; ++index)
+            //    _items[index] = movies[index];
         }
         public void Add( Movie movie )
         {
-            var index = FindNextFreeindex();
-            if (index >= 0)
-                _movies[index] = movie;
+            _items.Add(movie);
+            //var index = FindNextFreeindex();
+            //if (index >= 0)
+            //    _movies[index] = movie;
         }
 
-        private int FindNextFreeindex()
-        {
-            for (var index = 0; index < _movies.Length; ++index)
-            {
-                if (_movies[index] == null)
-                    return index;
-            };
-
-            return -1;
-        }
-
-        private Movie[] _movies = new Movie[100];
+        //private Movie[] _movies = new Movie[100];
+        private List<Movie> _items = new List<Movie>();
 
         public Movie[] GetAll()
         {
             //How many movies do we have
-            var count = 0;
-            foreach (var movie in _movies)
-            {
-                if (movie != null)
-                    ++count;
-            };
-            //solves null
+            var count = _items.Count;
+
             var temp = new Movie[count];
             var index = 0;
-            foreach (var movie in _movies)
+            foreach (var movie in _items)
             {
-                if (movie != null)
-                    temp[index++] = movie;
+                temp[index++] = movie;
             };
             return temp;
         }
 
-        public void Edit (string name, Movie movie)
+        public void Edit( string name, Movie movie )
         {
             //Find movie by name
             Remove(name);
@@ -102,16 +89,24 @@ namespace ITSE1430.MovieLib
             //Replace it
             Add(movie);
         }
+
         public void Remove( string name )
         {
-            for (var index = 0; index < _movies.Length; ++index)
+            var movie = FindMovie(name);
+            if (movie != null)
+                _items.Remove(movie);
+        }
+
+        private Movie FindMovie( string name )
+        {
+            //for (var index = 0; index < _movies.Length; ++index)
+            foreach (var movie in _items)
             {
-                if (String.Compare(name, _movies[index]?.Name, true) == 0)
-                {
-                    _movies[index] = null;
-                    return;
-                };
+                // if (String.Compare(name, _movies[index]?.Name, true) == 0)
+                if (String.Compare(name, movie.Name, true) == 0)
+                    return movie;
             };
+            return null;
         }
     }
 }

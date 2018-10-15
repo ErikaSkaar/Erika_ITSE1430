@@ -31,13 +31,14 @@ namespace ITSE1430.MovieLib.UI
             if (!ValidateChildren())
                 return;
 
-            var movie = new Movie();
-
-            movie.Name = _txtName.Text;
-            movie.Description = _txtDescription.Text;
-            movie.ReleaseYear = GetInt32(_txtReleaseYear);
-            movie.RunLength = GetInt32(_txtRunLength);
-            movie.IsOwned = _chkOwned.Checked;
+            var movie = new Movie()
+            {
+                Name = _txtName.Text,
+                Description = _txtDescription.Text,
+                ReleaseYear = GetInt32(_txtReleaseYear),
+                RunLength = GetInt32(_txtRunLength),
+                IsOwned = _chkOwned.Checked,
+            };
 
             Movie = movie;
             DialogResult = DialogResult.OK;
@@ -45,7 +46,7 @@ namespace ITSE1430.MovieLib.UI
         }
         #endregion
 
-        private int GetInt32 (TextBox textBox )
+        private int GetInt32( TextBox textBox )
         {
             if (String.IsNullOrEmpty(textBox.Text))
                 return -1;
@@ -91,7 +92,7 @@ namespace ITSE1430.MovieLib.UI
                 _errors.SetError(control, "Must be > 1900");
                 e.Cancel = true;
             } else
-                _errors.SetError(control, "");               
+                _errors.SetError(control, "");
         }
 
         private void OnValidatingRunLength( object sender, CancelEventArgs e )
