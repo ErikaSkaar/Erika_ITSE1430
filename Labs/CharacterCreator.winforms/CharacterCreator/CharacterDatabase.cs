@@ -25,7 +25,14 @@ namespace CharacterCreator
           new Character()
             {
                 Name = "Sirilius",
-                Description = "She is a Badass",
+                Race = "Genasi",
+                Class = "wizard",
+                AttributeStrength = 100,
+                AttributeIntelligence = 100,
+                AttributeAgility = 100,
+                AttributeConstitution = 100,
+                AttributeCharisma = 100,
+                Description = "She is a Badass"
             },
           };
         }

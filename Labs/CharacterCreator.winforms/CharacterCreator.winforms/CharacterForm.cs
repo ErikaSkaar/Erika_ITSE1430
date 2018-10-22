@@ -80,8 +80,8 @@ namespace CharacterCreator.winforms
             {
                 _txtName.Text = Character.Name;
                 _txtDescription.Text = Character.Description;
-                //Race
-                //Class
+                _cmbRaceBox.Text = Character.Race;
+                _cmbClassBox.Text = Character.Class;
                 _txtAttributesStrength.Text = Character.AttributeStrength.ToString();
                 _txtAttributesIntelligence.Text = Character.AttributeIntelligence.ToString();
                 _txtAttributeAgility.Text = Character.AttributeAgility.ToString();
@@ -90,8 +90,9 @@ namespace CharacterCreator.winforms
             };
 
             ValidateChildren();
-            /*not getting errors to show 
-             * unless type _txtName in Error on "_errors"*/
+            /*not getting error icon to show 
+             * unless type _txtName in Error on "_errors"
+             and then it just stays on screen*/
         }
     }
 }

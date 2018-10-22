@@ -30,8 +30,19 @@ namespace CharacterCreator
         private string _description; 
 
        //Combo boxes
-        public string Race;
-        public string Class;
+        public string Race
+        {
+            get { return _cmbRaceBox; }
+            set { _cmbRaceBox =value; }
+        }
+        private string _cmbRaceBox;
+
+        public string Class
+        {
+            get { return _cmbClassBox; }
+            set { _cmbClassBox = value; }
+        }
+        private string _cmbClassBox;
 
         //All attributes
         public int AttributeStrength { get; set; }

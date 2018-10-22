@@ -217,7 +217,14 @@
             // 
             // _cmbRaceBox
             // 
+            this._cmbRaceBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._cmbRaceBox.FormattingEnabled = true;
+            this._cmbRaceBox.Items.AddRange(new object[] {
+            "Human",
+            "Genasi",
+            "Aasimar",
+            "Dragon Born",
+            "Minotaur"});
             this._cmbRaceBox.Location = new System.Drawing.Point(149, 87);
             this._cmbRaceBox.Name = "_cmbRaceBox";
             this._cmbRaceBox.Size = new System.Drawing.Size(115, 21);
@@ -225,11 +232,19 @@
             // 
             // _cmbClassBox
             // 
+            this._cmbClassBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._cmbClassBox.FormattingEnabled = true;
+            this._cmbClassBox.Items.AddRange(new object[] {
+            "Barbarian",
+            "Paladin",
+            "Wizard",
+            "Rogue",
+            "Druid"});
             this._cmbClassBox.Location = new System.Drawing.Point(149, 124);
             this._cmbClassBox.Name = "_cmbClassBox";
             this._cmbClassBox.Size = new System.Drawing.Size(115, 21);
             this._cmbClassBox.TabIndex = 2;
+            this._cmbClassBox.SelectedIndexChanged += new System.EventHandler(this.CharacterForm_Load);
             // 
             // _errors
             // 
