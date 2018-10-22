@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ITSE1430.MovieLib.Memory;
 
 namespace ITSE1430.MovieLib.UI
 {
     public partial class MainForm : Form
     {
-        #region Consruction
+        #region Construction
 
         public MainForm()
         {
@@ -20,9 +21,33 @@ namespace ITSE1430.MovieLib.UI
         }
         #endregion
 
-        private void exitToolStripMenuItem_Click( object sender, EventArgs e )
+        //This method can be overridden in a derived type
+        //protected virtual void SomeFunction ()
+        //{ }
+
+        //This method MUST BE defined in a derived type
+        //protected abstract void SomeAbstractFunction();
+
+        /// <summary></summary>
+        /// <param name="e"></param>
+        protected override void OnLoad( EventArgs e )
         {
-            if (MessageBox.Show("Are you sure you want to exit?", "Close", MessageBoxButtons.YesNo) == DialogResult.No)
+            base.OnLoad(e);
+
+            //Seed database
+            //var seed = new SeedDatabase();
+            SeedDatabase.Seed(_database);
+
+            _listMovies.DisplayMember = "Name";
+            RefreshMovies();
+        }
+
+        #region Event Handlers
+
+        private void OnFileExit( object sender, EventArgs e )
+        {
+            if (MessageBox.Show("Are you sure you want to exit?",
+                        "Close", MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
 
             Close();
@@ -31,7 +56,7 @@ namespace ITSE1430.MovieLib.UI
         private void OnHelpAbout( object sender, EventArgs e )
         {
             //aboutToolStripMenuItem.
-            MessageBox.Show(this, "So Sorry", "Help", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show(this, "Sorry", "Help", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void OnMovieAdd( object sender, EventArgs e )
@@ -40,43 +65,9 @@ namespace ITSE1430.MovieLib.UI
             if (form.ShowDialog(this) == DialogResult.Cancel)
                 return;
 
-            //MessageBox.Show("Adding Movie");
-             _database.Add(form.Movie);           
+            //Add to database and refresh
+            _database.Add(form.Movie);
             RefreshMovies();
-        }
-
-        private MovieDatabase _database = new MovieDatabase();
-
-        //This method can be overridden in a derived type
-        protected virtual void SomeFunction ()
-        { }
-
-        //this method that MUST BE defined in a drived type 
-        //protected abstract void SomeAbsractfunction();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="e"></param>
-        protected override void OnLoad( EventArgs e )
-        {
-            base.OnLoad(e);
-
-            _listMovies.DisplayMember = "Name";
-            RefreshMovies();
-        }
-
-        private void RefreshMovies ()
-        {
-            var movies = _database.GetAll();
-
-            _listMovies.Items.Clear();
-            _listMovies.Items.AddRange(movies);
-        }
-
-        private Movie GetSelectedMovie ()
-        {
-            return _listMovies.SelectedItem as Movie;
         }
 
         private void OnMovieDelete( object sender, EventArgs e )
@@ -89,34 +80,9 @@ namespace ITSE1430.MovieLib.UI
             EditMovie();
         }
 
-        private void EditMovie ()
-        {
-            var item = GetSelectedMovie();
-            if (item == null)
-                return;
-
-            var form = new MovieForm();
-            form.Movie = item;
-            if (form.ShowDialog(this) == DialogResult.Cancel)
-                return;
-
-            _database.Edit(item.Name, form.Movie);
-            RefreshMovies();
-        }
-
         private void OnMovieDoubleClick( object sender, EventArgs e )
         {
             EditMovie();
-        }
-
-        private void DeleteMovie()
-        {
-            var item = GetSelectedMovie();
-            if (item == null)
-                return;
-
-            _database.Remove(item.Name);
-            RefreshMovies();
         }
 
         private void OnListKeyUp( object sender, KeyEventArgs e )
@@ -126,5 +92,55 @@ namespace ITSE1430.MovieLib.UI
                 DeleteMovie();
             };
         }
+        #endregion
+
+        #region Private Members
+
+        private void DeleteMovie()
+        {
+            //Get selected movie, if any
+            var item = GetSelectedMovie();
+            if (item == null)
+                return;
+
+            //Remove from database and refresh
+            _database.Remove(item.Name);
+            RefreshMovies();
+        }
+
+        private void EditMovie()
+        {
+            //Get selected movie, if any
+            var item = GetSelectedMovie();
+            if (item == null)
+                return;
+
+            //Show form with selected movie
+            var form = new MovieForm();
+            form.Movie = item;
+            if (form.ShowDialog(this) == DialogResult.Cancel)
+                return;
+
+            //Update database and refresh
+            _database.Edit(item.Name, form.Movie);
+            RefreshMovies();
+        }
+
+        private void RefreshMovies()
+        {
+            var movies = _database.GetAll();
+
+            _listMovies.Items.Clear();
+            _listMovies.Items.AddRange(movies);
+        }
+
+        private Movie GetSelectedMovie()
+        {
+            return _listMovies.SelectedItem as Movie;
+        }
+
+        private MovieDatabase _database = new MemoryMovieDatabase();
+
+        #endregion        
     }
 }
