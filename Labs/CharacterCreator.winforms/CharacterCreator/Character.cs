@@ -27,7 +27,7 @@ namespace CharacterCreator
             get { return _description ?? ""; }
             set { _description = value; }
         }
-        private string _description;
+        private string _description; 
 
        //Combo boxes
         public string Race;
