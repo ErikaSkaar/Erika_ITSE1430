@@ -40,6 +40,8 @@ namespace CharacterCreator.winforms
             {
                 Name = _txtName.Text,
                 Description = _txtDescription.Text,
+                Race = _cmbRaceBox.Text,
+                Class = _cmbClassBox.Text,
                 AttributeStrength = GetInt32(_txtAttributesStrength),
                 AttributeIntelligence = GetInt32(_txtAttributesIntelligence),
                 AttributeAgility = GetInt32(_txtAttributeAgility),

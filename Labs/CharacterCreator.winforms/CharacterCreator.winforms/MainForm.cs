@@ -70,6 +70,7 @@ namespace CharacterCreator.winforms
                 return;
 
             var form = new CharacterForm();
+            form.Text = "Edit Character";
             form.Character = item;
             if (form.ShowDialog(this) == DialogResult.Cancel)
                 return;
