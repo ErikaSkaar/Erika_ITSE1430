@@ -62,7 +62,10 @@ namespace CharacterCreator.winforms
                 e.Cancel = true;
             }
             else
+            {
                 _errors.SetError(control, "");
+            }
+            ValidateChildren ();
         }
 
         private int GetInt32(TextBox textBox)

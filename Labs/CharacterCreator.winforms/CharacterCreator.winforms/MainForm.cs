@@ -89,6 +89,8 @@ namespace CharacterCreator.winforms
         }
         private void DeleteCharacter()
         {
+            if (MessageBox.Show( "Are you sure you want to delete this character?",  "Finish them...", MessageBoxButtons.YesNo) == DialogResult.No) 
+                return;
             var item = GetSelectedCharacter();
             if (item == null)
                 return;
