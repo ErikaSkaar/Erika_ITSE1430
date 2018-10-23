@@ -1,13 +1,30 @@
 ﻿ using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ITSE1430.MovieLib
 {
-    public class Movie
-    {
+    public class Movie : IValidatableObject
+        {
+        public IEnumerable<ValidationResult> Validate( ValidationContext validationContext )
+        {
+            //var results = new List<ValidationResult>();
+
+            if (String.IsNullOrEmpty(Name))
+              yield return new ValidationResult("Name is required", new[] { nameof(Name) });
+
+            if (ReleaseYear < 1900)
+              yield return new ValidationResult("Release year must be >= 1900", new[] { nameof(ReleaseYear) });
+
+            if (RunLength < 0)
+              yield return new ValidationResult("Run Length must be >= 0", new[] { nameof(RunLength) });
+
+        }
+
+        //Property to back the name field
         public string Name
         {
             get { return _name ?? ""; } //has implicit syntax of -->string get ()
