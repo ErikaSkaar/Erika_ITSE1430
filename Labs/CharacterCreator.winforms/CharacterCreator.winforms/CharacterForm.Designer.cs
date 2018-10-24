@@ -28,50 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this._txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this._txtAttributesStrength = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this._txtDescription = new System.Windows.Forms.TextBox();
+            this._txtAttributesIntelligence = new System.Windows.Forms.TextBox();
+            this._txtAttributeAgility = new System.Windows.Forms.TextBox();
+            this._txtAttributeConstitution = new System.Windows.Forms.TextBox();
+            this._txtAttributeCharisma = new System.Windows.Forms.TextBox();
+            this._btnSave = new System.Windows.Forms.Button();
+            this._btnCancel = new System.Windows.Forms.Button();
+            this.strength = new System.Windows.Forms.Label();
+            this.Intelligence = new System.Windows.Forms.Label();
+            this.Agility = new System.Windows.Forms.Label();
+            this.Constitution = new System.Windows.Forms.Label();
+            this.Charisma = new System.Windows.Forms.Label();
+            this._cmbRaceBox = new System.Windows.Forms.ComboBox();
+            this._cmbClassBox = new System.Windows.Forms.ComboBox();
+            this._errors = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this._errors)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 35);
+            this.label1.Location = new System.Drawing.Point(15, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Character Name";
             // 
-            // textBox1
+            // _txtName
             // 
-            this.textBox1.Location = new System.Drawing.Point(172, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(434, 20);
-            this.textBox1.TabIndex = 1;
+            this._errors.SetError(this._txtName, "_txtName");
+            this._txtName.Location = new System.Drawing.Point(149, 40);
+            this._txtName.Name = "_txtName";
+            this._txtName.Size = new System.Drawing.Size(453, 20);
+            this._txtName.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 117);
+            this.label2.Location = new System.Drawing.Point(67, 127);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 2;
@@ -80,7 +83,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 79);
+            this.label3.Location = new System.Drawing.Point(66, 90);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 13);
             this.label3.TabIndex = 4;
@@ -89,205 +92,202 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 166);
+            this.label4.Location = new System.Drawing.Point(48, 199);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 13);
             this.label4.TabIndex = 6;
             this.label4.Text = "Attributes";
             // 
-            // textBox4
+            // _txtAttributesStrength
             // 
-            this.textBox4.Location = new System.Drawing.Point(172, 163);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(70, 20);
-            this.textBox4.TabIndex = 7;
+            this._txtAttributesStrength.Location = new System.Drawing.Point(151, 196);
+            this._txtAttributesStrength.Name = "_txtAttributesStrength";
+            this._txtAttributesStrength.Size = new System.Drawing.Size(70, 20);
+            this._txtAttributesStrength.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(38, 211);
+            this.label5.Location = new System.Drawing.Point(39, 244);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 13);
             this.label5.TabIndex = 8;
             this.label5.Text = "Description";
             // 
-            // textBox5
+            // _txtDescription
             // 
-            this.textBox5.Location = new System.Drawing.Point(172, 211);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(453, 150);
-            this.textBox5.TabIndex = 9;
+            this._txtDescription.Location = new System.Drawing.Point(149, 241);
+            this._txtDescription.Multiline = true;
+            this._txtDescription.Name = "_txtDescription";
+            this._txtDescription.Size = new System.Drawing.Size(453, 150);
+            this._txtDescription.TabIndex = 8;
             // 
-            // radioButton1
+            // _txtAttributesIntelligence
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(172, 117);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(70, 17);
-            this.radioButton1.TabIndex = 11;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Barbarian";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this._txtAttributesIntelligence.Location = new System.Drawing.Point(241, 196);
+            this._txtAttributesIntelligence.Name = "_txtAttributesIntelligence";
+            this._txtAttributesIntelligence.Size = new System.Drawing.Size(70, 20);
+            this._txtAttributesIntelligence.TabIndex = 4;
             // 
-            // radioButton2
+            // _txtAttributeAgility
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(264, 117);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(60, 17);
-            this.radioButton2.TabIndex = 12;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Paladin";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this._txtAttributeAgility.Location = new System.Drawing.Point(332, 196);
+            this._txtAttributeAgility.Name = "_txtAttributeAgility";
+            this._txtAttributeAgility.Size = new System.Drawing.Size(70, 20);
+            this._txtAttributeAgility.TabIndex = 5;
             // 
-            // radioButton3
+            // _txtAttributeConstitution
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(356, 117);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(58, 17);
-            this.radioButton3.TabIndex = 13;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Wizard";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this._txtAttributeConstitution.Location = new System.Drawing.Point(425, 196);
+            this._txtAttributeConstitution.Name = "_txtAttributeConstitution";
+            this._txtAttributeConstitution.Size = new System.Drawing.Size(70, 20);
+            this._txtAttributeConstitution.TabIndex = 6;
             // 
-            // radioButton4
+            // _txtAttributeCharisma
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(448, 117);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(57, 17);
-            this.radioButton4.TabIndex = 14;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Rogue";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this._txtAttributeCharisma.Location = new System.Drawing.Point(513, 196);
+            this._txtAttributeCharisma.Name = "_txtAttributeCharisma";
+            this._txtAttributeCharisma.Size = new System.Drawing.Size(70, 20);
+            this._txtAttributeCharisma.TabIndex = 7;
             // 
-            // radioButton5
+            // _btnSave
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(540, 117);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(50, 17);
-            this.radioButton5.TabIndex = 15;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Druid";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this._btnSave.Location = new System.Drawing.Point(256, 413);
+            this._btnSave.Name = "_btnSave";
+            this._btnSave.Size = new System.Drawing.Size(75, 23);
+            this._btnSave.TabIndex = 9;
+            this._btnSave.Text = "Save";
+            this._btnSave.UseVisualStyleBackColor = true;
+            this._btnSave.Click += new System.EventHandler(this.OnSave);
             // 
-            // radioButton6
+            // _btnCancel
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(172, 74);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(59, 17);
-            this.radioButton6.TabIndex = 16;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Human";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this._btnCancel.Location = new System.Drawing.Point(374, 413);
+            this._btnCancel.Name = "_btnCancel";
+            this._btnCancel.Size = new System.Drawing.Size(75, 23);
+            this._btnCancel.TabIndex = 10;
+            this._btnCancel.Text = "Cancel";
+            this._btnCancel.UseVisualStyleBackColor = true;
+            this._btnCancel.Click += new System.EventHandler(this.OnCancel);
             // 
-            // radioButton7
+            // strength
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(264, 74);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(58, 17);
-            this.radioButton7.TabIndex = 17;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Genasi";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.strength.AutoSize = true;
+            this.strength.Location = new System.Drawing.Point(157, 175);
+            this.strength.Name = "strength";
+            this.strength.Size = new System.Drawing.Size(47, 13);
+            this.strength.TabIndex = 0;
+            this.strength.Text = "Strength";
             // 
-            // radioButton8
+            // Intelligence
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(448, 74);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(85, 17);
-            this.radioButton8.TabIndex = 18;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "Dragon Born";
-            this.radioButton8.UseVisualStyleBackColor = true;
+            this.Intelligence.AutoSize = true;
+            this.Intelligence.Location = new System.Drawing.Point(239, 175);
+            this.Intelligence.Name = "Intelligence";
+            this.Intelligence.Size = new System.Drawing.Size(61, 13);
+            this.Intelligence.TabIndex = 20;
+            this.Intelligence.Text = "Intelligence";
             // 
-            // radioButton9
+            // Agility
             // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(540, 75);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(66, 17);
-            this.radioButton9.TabIndex = 19;
-            this.radioButton9.TabStop = true;
-            this.radioButton9.Text = "Minotaur";
-            this.radioButton9.UseVisualStyleBackColor = true;
+            this.Agility.AutoSize = true;
+            this.Agility.Location = new System.Drawing.Point(348, 175);
+            this.Agility.Name = "Agility";
+            this.Agility.Size = new System.Drawing.Size(34, 13);
+            this.Agility.TabIndex = 21;
+            this.Agility.Text = "Agility";
             // 
-            // radioButton10
+            // Constitution
             // 
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.Location = new System.Drawing.Point(356, 75);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(62, 17);
-            this.radioButton10.TabIndex = 20;
-            this.radioButton10.TabStop = true;
-            this.radioButton10.Text = "Aasimar";
-            this.radioButton10.UseVisualStyleBackColor = true;
+            this.Constitution.AutoSize = true;
+            this.Constitution.Location = new System.Drawing.Point(422, 175);
+            this.Constitution.Name = "Constitution";
+            this.Constitution.Size = new System.Drawing.Size(62, 13);
+            this.Constitution.TabIndex = 22;
+            this.Constitution.Text = "Constitution";
             // 
-            // textBox2
+            // Charisma
             // 
-            this.textBox2.Location = new System.Drawing.Point(248, 163);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(70, 20);
-            this.textBox2.TabIndex = 21;
+            this.Charisma.AutoSize = true;
+            this.Charisma.Location = new System.Drawing.Point(520, 175);
+            this.Charisma.Name = "Charisma";
+            this.Charisma.Size = new System.Drawing.Size(50, 13);
+            this.Charisma.TabIndex = 23;
+            this.Charisma.Text = "Charisma";
             // 
-            // textBox3
+            // _cmbRaceBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(324, 163);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(70, 20);
-            this.textBox3.TabIndex = 22;
+            this._cmbRaceBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._cmbRaceBox.FormattingEnabled = true;
+            this._cmbRaceBox.Items.AddRange(new object[] {
+            "Human",
+            "Genasi",
+            "Aasimar",
+            "Dragon Born",
+            "Minotaur"});
+            this._cmbRaceBox.Location = new System.Drawing.Point(149, 87);
+            this._cmbRaceBox.Name = "_cmbRaceBox";
+            this._cmbRaceBox.Size = new System.Drawing.Size(115, 21);
+            this._cmbRaceBox.TabIndex = 1;
             // 
-            // textBox6
+            // _cmbClassBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(400, 163);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(70, 20);
-            this.textBox6.TabIndex = 23;
+            this._cmbClassBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._cmbClassBox.FormattingEnabled = true;
+            this._cmbClassBox.Items.AddRange(new object[] {
+            "Barbarian",
+            "Paladin",
+            "Wizard",
+            "Rogue",
+            "Druid"});
+            this._cmbClassBox.Location = new System.Drawing.Point(149, 124);
+            this._cmbClassBox.Name = "_cmbClassBox";
+            this._cmbClassBox.Size = new System.Drawing.Size(115, 21);
+            this._cmbClassBox.TabIndex = 2;
+            this._cmbClassBox.SelectedIndexChanged += new System.EventHandler(this.CharacterForm_Load);
             // 
-            // textBox7
+            // _errors
             // 
-            this.textBox7.Location = new System.Drawing.Point(476, 163);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(70, 20);
-            this.textBox7.TabIndex = 24;
+            this._errors.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this._errors.ContainerControl = this;
             // 
             // CharacterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.CausesValidation = false;
+            this.ClientSize = new System.Drawing.Size(683, 448);
             this.ControlBox = false;
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.radioButton10);
-            this.Controls.Add(this.radioButton9);
-            this.Controls.Add(this.radioButton8);
-            this.Controls.Add(this.radioButton7);
-            this.Controls.Add(this.radioButton6);
-            this.Controls.Add(this.radioButton5);
-            this.Controls.Add(this.radioButton4);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this._cmbClassBox);
+            this.Controls.Add(this._cmbRaceBox);
+            this.Controls.Add(this.Charisma);
+            this.Controls.Add(this.Constitution);
+            this.Controls.Add(this.Agility);
+            this.Controls.Add(this.Intelligence);
+            this.Controls.Add(this.strength);
+            this.Controls.Add(this._btnCancel);
+            this.Controls.Add(this._btnSave);
+            this.Controls.Add(this._txtAttributeCharisma);
+            this.Controls.Add(this._txtAttributeConstitution);
+            this.Controls.Add(this._txtAttributeAgility);
+            this.Controls.Add(this._txtAttributesIntelligence);
+            this.Controls.Add(this._txtDescription);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this._txtAttributesStrength);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this._txtName);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(699, 487);
+            this.MinimumSize = new System.Drawing.Size(699, 487);
             this.Name = "CharacterForm";
             this.ShowInTaskbar = false;
-            this.Text = "CharacterDetails";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Create New Character";
+            this.Load += new System.EventHandler(this.CharacterForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this._errors)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,26 +296,26 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox _txtName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox _txtAttributesStrength;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton8;
-        private System.Windows.Forms.RadioButton radioButton9;
-        private System.Windows.Forms.RadioButton radioButton10;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox _txtDescription;
+        private System.Windows.Forms.TextBox _txtAttributesIntelligence;
+        private System.Windows.Forms.TextBox _txtAttributeAgility;
+        private System.Windows.Forms.TextBox _txtAttributeConstitution;
+        private System.Windows.Forms.TextBox _txtAttributeCharisma;
+        private System.Windows.Forms.Button _btnSave;
+        private System.Windows.Forms.Button _btnCancel;
+        private System.Windows.Forms.Label strength;
+        private System.Windows.Forms.Label Intelligence;
+        private System.Windows.Forms.Label Agility;
+        private System.Windows.Forms.Label Constitution;
+        private System.Windows.Forms.Label Charisma;
+        private System.Windows.Forms.ComboBox _cmbRaceBox;
+        private System.Windows.Forms.ComboBox _cmbClassBox;
+        private System.Windows.Forms.ErrorProvider _errors;
     }
 }
