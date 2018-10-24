@@ -36,7 +36,8 @@ namespace ITSE1430.MovieLib.UI
 
             //Seed database
             //var seed = new SeedDatabase();
-            SeedDatabase.Seed(_database);
+            //SeedDatabase.Seed(_database);
+            _database.Seed();
 
             _listMovies.DisplayMember = "Name";
             RefreshMovies();
@@ -132,9 +133,9 @@ namespace ITSE1430.MovieLib.UI
 
             _listMovies.Items.Clear();
 
-            foreach (var movie in movies)
-                _listMovies.Items.Add(movie);
-            //_listMovies.Items.AddRange(movies);
+           // foreach (var movie in movies)
+              //  _listMovies.Items.Add(movie);
+            _listMovies.Items.AddRange(movies.ToArray());
         }
 
         private Movie GetSelectedMovie()
@@ -142,7 +143,7 @@ namespace ITSE1430.MovieLib.UI
             return _listMovies.SelectedItem as Movie;
         }
 
-        private MovieDatabase _database = new MemoryMovieDatabase();
+        private IMovieDatabase _database = new MemoryMovieDatabase();
 
         #endregion        
     }
