@@ -27,8 +27,13 @@ namespace ITSE1430.MovieLib
         //Property to back the name field
         public string Name
         {
-            get { return _name ?? ""; } //has implicit syntax of -->string get ()
-            set { _name = value; } // void set ( string value ) 
+            //change these to Lambdas
+
+            //get { return _name ?? ""; } //has implicit syntax of -->string get ()
+            get => _name ?? "";
+
+            //set { _name = value; } // void set ( string value ) 
+            set => _name = value; //lmabda or exspression bodies
         }
         private string _name;
                                                   //this maps to ->  public System.String Name;
@@ -65,10 +70,11 @@ namespace ITSE1430.MovieLib
             //showing mixed accessibilty
         public int Id { get; private set; }
 
-        public bool IsColor //calculated property
-        {
-            get { return ReleaseYear > 1940; }
-        }
+        public bool IsColor => ReleaseYear > 1940;
+        //{
+        //    //get { return releaseYear > 1940;}
+        //    get => ReleaseYear > 1940;
+        //}
 
         public bool IsOwned { get;set; }
     }
