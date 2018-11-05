@@ -46,7 +46,7 @@ namespace CharacterCreator
         {
             _items.Add(character);
         }
-
+ 
         public void Edit(string name, Character character)
         {
             Remove(name);

@@ -33,7 +33,7 @@ namespace CharacterCreator
         public string Race
         {
             get { return _cmbRaceBox; }
-            set { _cmbRaceBox =value; }
+            set { _cmbRaceBox = value; }
         }
         private string _cmbRaceBox;
 
