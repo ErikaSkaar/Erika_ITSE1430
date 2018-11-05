@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace ContactManager
 {
-    class Contact
+    public class Contact
     {
+        //Contact name
+        public string Name
+        {
+            get { return _name ?? ""; }
+            set { _name = value; }
+        }
+        private string _name;
+
+        //Contact email address
     }
+
 }
