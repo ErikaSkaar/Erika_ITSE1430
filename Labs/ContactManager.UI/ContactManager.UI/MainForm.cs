@@ -38,7 +38,7 @@ namespace ContactManager.UI
         //will need to refresh contacts 
         private void OnNewContact(object sender, EventArgs e)
         {
-            var form = new ContactInformation();
+            var form = new ContactForm();
             if (form.ShowDialog(this) == DialogResult.Cancel)
                 return;
 
