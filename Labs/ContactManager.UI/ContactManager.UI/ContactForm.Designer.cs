@@ -56,6 +56,9 @@
             // 
             // _txtName
             // 
+            this._txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this._txtName.Location = new System.Drawing.Point(126, 46);
             this._txtName.Name = "_txtName";
             this._txtName.Size = new System.Drawing.Size(182, 20);
@@ -63,6 +66,9 @@
             // 
             // _txtEmailAddress
             // 
+            this._txtEmailAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this._txtEmailAddress.Location = new System.Drawing.Point(126, 93);
             this._txtEmailAddress.Name = "_txtEmailAddress";
             this._txtEmailAddress.Size = new System.Drawing.Size(182, 20);
@@ -70,7 +76,9 @@
             // 
             // _btnSave
             // 
+            this._btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this._btnSave.Location = new System.Drawing.Point(126, 149);
+            this._btnSave.MinimumSize = new System.Drawing.Size(75, 23);
             this._btnSave.Name = "_btnSave";
             this._btnSave.Size = new System.Drawing.Size(75, 23);
             this._btnSave.TabIndex = 4;
@@ -80,6 +88,7 @@
             // 
             // _btnCancel
             // 
+            this._btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this._btnCancel.Location = new System.Drawing.Point(233, 149);
             this._btnCancel.Name = "_btnCancel";
             this._btnCancel.Size = new System.Drawing.Size(75, 23);
@@ -100,6 +109,7 @@
             this.Controls.Add(this._txtName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MinimumSize = new System.Drawing.Size(425, 249);
             this.Name = "ContactForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Contact Information";

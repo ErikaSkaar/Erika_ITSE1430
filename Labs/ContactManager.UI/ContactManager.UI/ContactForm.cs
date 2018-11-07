@@ -17,25 +17,29 @@ namespace ContactManager.UI
             InitializeComponent();
         }
 
+        //Contact Class
         public Contact Contact { get; set; }
 
+        //Cancel Add Contact
         private void OnCancel(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             Close();
         }
 
+        //Save Contact
         private void OnSave(object sender, EventArgs e)
         {
             var contact = new Contact()
             {
                 Name = _txtName.Text,
                 Email = _txtEmailAddress.Text,    
-
             };
             Contact = contact;
             DialogResult = DialogResult.OK;
             Close();
         }
+
+
     }
 }

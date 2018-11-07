@@ -16,5 +16,21 @@ namespace ContactManager.UI
         {
             InitializeComponent();
         }
+        
+        //Contact Class
+        public Contact Contact { get; set; }
+        
+        //Cancel Message 
+        private void OnCancel(object sender, EventArgs e)
+        {
+                DialogResult = DialogResult.Cancel;
+                Close();
+        }
+        
+        //Send Message
+        private void OnSend(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -28,6 +28,21 @@ namespace ContactManager
             set { _email = value; }
         }
         private string _email;
-    }
 
+        //Email Message
+        public string Message
+        {
+            get { return _txtMessage ?? ""; }
+            set { _txtMessage = value; }
+        }
+        private string _txtMessage;
+
+        //Subject line
+        public string Subject
+        {
+            get { return _txtSubject ?? ""; }
+            set { _txtSubject = value; }
+        }
+        private string _txtSubject;
+    }
 }

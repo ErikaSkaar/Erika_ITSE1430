@@ -22,6 +22,15 @@ namespace ContactManager.UI
             InitializeComponent();
         }
 
+        //loads and refreshes names
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            // base.OnLoad(e);  
+            _listMainLeft.DisplayMember = "Name";
+            RefreshContacts();
+        }
+
+        //Exit Program
         private void OnExit(object sender, EventArgs e)
         {
             if (MessageBox.Show("Would you like to exit?", "Exit Contact Manager", MessageBoxButtons.YesNo) == DialogResult.No)
@@ -29,13 +38,22 @@ namespace ContactManager.UI
             Close();
         }
 
+        //About Message
         private void OnHelpAbout(object sender, EventArgs e)
         {
             var form = new AboutForm();
             if (form.ShowDialog(this) == DialogResult.Cancel) return;
         }
 
-        //will need to refresh contacts 
+        //Send Message
+        private void OnMessageSend(object sender, EventArgs e)
+        {
+            var form = new MessageForm();
+            if (form.ShowDialog(this) == DialogResult.Cancel)
+                return;
+        }
+
+        //Adding New Contact
         private void OnNewContact(object sender, EventArgs e)
         {
             var form = new ContactForm();
@@ -43,19 +61,76 @@ namespace ContactManager.UI
                 return;
 
             _database.Add(form.Contact);
-
+            RefreshContacts();
         }
 
+        //Edit Contacts
         private void OnEditContact(object sender, EventArgs e)
         {
-
+            EditContact();
         }
 
+        //Edit from Database
+        private void EditContact()
+        {
+            var item = GetSelectedContact();
+            if (item == null)
+                return;
+
+            var form = new ContactForm();
+            form.Text = "Edit Contact";
+            form.Contact = item;
+            if (form.ShowDialog(this) == DialogResult.Cancel)
+                return;
+
+            _database.Edit(item.Name, form.Contact);
+            RefreshContacts();
+        }
+
+        //Delete Contacts
         private void OnDeleteContact(object sender, EventArgs e)
         {
-
+            DeleteContact();
         }
 
+        //Removes from Database
+        private void DeleteContact()
+        {
+            if (MessageBox.Show("Are you sure you want to delete this contact?", "Contact Delete", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+            var item = GetSelectedContact();
+            if (item == null)
+                return;
+
+            _database.Remove(item.Name);
+            RefreshContacts();
+        }
+
+        //Key delete of contact
+        private void OnListKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Delete)
+            {
+                DeleteContact();
+            };
+        }
+
+        //Selects Contact
+        private Contact GetSelectedContact()
+        {
+            return _listMainLeft.SelectedItem as Contact;
+        }
+
+        //Refreshes Contacts
+        private void RefreshContacts()
+        {
+            var contacts = _database.GetAll();
+
+            _listMainLeft.Items.Clear();
+            _listMainLeft.Items.AddRange(contacts);
+        }
+
+        //Call from Database
         private ContactDatabase _database = new ContactDatabase();
     }
 }
