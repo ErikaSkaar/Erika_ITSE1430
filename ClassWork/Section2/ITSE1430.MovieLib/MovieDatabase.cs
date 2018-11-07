@@ -23,7 +23,13 @@ namespace ITSE1430.MovieLib
             //if (movie == null)
             //    return;
 
-            AddCore(movie);
+            try
+            {
+                AddCore(movie);
+            } catch (Exception e)
+            {
+                throw new Exception("Add failed", e);
+            };
         }
 
         protected abstract void AddCore( Movie movie );

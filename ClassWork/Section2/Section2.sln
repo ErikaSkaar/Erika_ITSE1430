@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITSE1430.MovieLib.Memory", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayWithLinq", "PlayWithLinq\PlayWithLinq.csproj", "{6B948341-67FA-4037-AE7E-817309687117}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{636E1C97-7ED2-4CFF-8AEB-24472F3793B7}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MovieDatabase", "MovieDatabase\MovieDatabase.sqlproj", "{D336CD26-C9B8-4B7F-83E7-2F951DF1FABC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITSE1430.MovieLib.Sql", "ITSE1430.MovieLib.Sql\ITSE1430.MovieLib.Sql.csproj", "{F12AF275-73E7-46F0-8C7B-A36506A28220}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +39,16 @@ Global
 		{6B948341-67FA-4037-AE7E-817309687117}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B948341-67FA-4037-AE7E-817309687117}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B948341-67FA-4037-AE7E-817309687117}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D336CD26-C9B8-4B7F-83E7-2F951DF1FABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D336CD26-C9B8-4B7F-83E7-2F951DF1FABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D336CD26-C9B8-4B7F-83E7-2F951DF1FABC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D336CD26-C9B8-4B7F-83E7-2F951DF1FABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D336CD26-C9B8-4B7F-83E7-2F951DF1FABC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D336CD26-C9B8-4B7F-83E7-2F951DF1FABC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{F12AF275-73E7-46F0-8C7B-A36506A28220}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F12AF275-73E7-46F0-8C7B-A36506A28220}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F12AF275-73E7-46F0-8C7B-A36506A28220}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F12AF275-73E7-46F0-8C7B-A36506A28220}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
