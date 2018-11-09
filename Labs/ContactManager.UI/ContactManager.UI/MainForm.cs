@@ -22,12 +22,16 @@ namespace ContactManager.UI
             InitializeComponent();
         }
 
-        //loads and refreshes names
-        private void MainForm_Load(object sender, EventArgs e)
+
+        protected override void OnLoad(EventArgs e)
         {
-            // base.OnLoad(e);  
+            base.OnLoad(e);
+
             _listMainLeft.DisplayMember = "Name";
+            _listMainRight.DisplayMember = "Message";
+
             RefreshContacts();
+            RefreshMessages();
         }
 
         //Exit Program
@@ -45,13 +49,20 @@ namespace ContactManager.UI
             if (form.ShowDialog(this) == DialogResult.Cancel) return;
         }
 
-        //Send Message
-        private void OnMessageSend(object sender, EventArgs e)
+        //Start new Message form
+        private void OnMessage(object sender, EventArgs e)
         {
+            var item = GetSelectedContact();
+            if (item == null)
+                return;
+
             var form = new MessageForm();
+            form.Contact = item;
             if (form.ShowDialog(this) == DialogResult.Cancel)
                 return;
-        }
+
+            _txtMsgContent.Send(form.Message);
+        } //  MessageContent = _txtMsgContent
 
         //Adding New Contact
         private void OnNewContact(object sender, EventArgs e)
@@ -130,7 +141,18 @@ namespace ContactManager.UI
             _listMainLeft.Items.AddRange(contacts);
         }
 
+        //Refresh messages on right
+        private void RefreshMessages()
+        {
+            var messages = from m in _sentMessages.GetAll()
+                           select m;
+
+            _listMainRight.Items.Clear();
+            _listMainRight.Items.AddRange(messages.ToArray());
+        }
+
         //Call from Database
-        private ContactDatabase _database = new ContactDatabase();
+        private IMessageServices _sentMessages = new MemoryMessageDatabase();
+        private IContactDatabase _database = new MemoryContactDatabase();
     }
 }

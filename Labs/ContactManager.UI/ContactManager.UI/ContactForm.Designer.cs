@@ -62,7 +62,7 @@
             this._txtName.Location = new System.Drawing.Point(126, 46);
             this._txtName.Name = "_txtName";
             this._txtName.Size = new System.Drawing.Size(182, 20);
-            this._txtName.TabIndex = 2;
+            this._txtName.TabIndex = 0;
             // 
             // _txtEmailAddress
             // 
@@ -72,7 +72,7 @@
             this._txtEmailAddress.Location = new System.Drawing.Point(126, 93);
             this._txtEmailAddress.Name = "_txtEmailAddress";
             this._txtEmailAddress.Size = new System.Drawing.Size(182, 20);
-            this._txtEmailAddress.TabIndex = 3;
+            this._txtEmailAddress.TabIndex = 1;
             // 
             // _btnSave
             // 
@@ -81,7 +81,7 @@
             this._btnSave.MinimumSize = new System.Drawing.Size(75, 23);
             this._btnSave.Name = "_btnSave";
             this._btnSave.Size = new System.Drawing.Size(75, 23);
-            this._btnSave.TabIndex = 4;
+            this._btnSave.TabIndex = 2;
             this._btnSave.Text = "Save";
             this._btnSave.UseVisualStyleBackColor = true;
             this._btnSave.Click += new System.EventHandler(this.OnSave);
@@ -92,7 +92,7 @@
             this._btnCancel.Location = new System.Drawing.Point(233, 149);
             this._btnCancel.Name = "_btnCancel";
             this._btnCancel.Size = new System.Drawing.Size(75, 23);
-            this._btnCancel.TabIndex = 5;
+            this._btnCancel.TabIndex = 3;
             this._btnCancel.Text = "Cancel";
             this._btnCancel.UseVisualStyleBackColor = true;
             this._btnCancel.Click += new System.EventHandler(this.OnCancel);
@@ -101,7 +101,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(409, 210);
+            this.ClientSize = new System.Drawing.Size(409, 233);
             this.ControlBox = false;
             this.Controls.Add(this._btnCancel);
             this.Controls.Add(this._btnSave);
@@ -113,6 +113,7 @@
             this.Name = "ContactForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Contact Information";
+            this.Load += new System.EventHandler(this.ContactForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

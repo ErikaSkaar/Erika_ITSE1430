@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*Student:Erika Ballering
+ * Teacher: Michael Taylor
+ * Class: ITSE 1430"Intro to C#" 
+ * Program:Contact Manager*/
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,21 +21,76 @@ namespace ContactManager.UI
         {
             InitializeComponent();
         }
-        
+
         //Contact Class
         public Contact Contact { get; set; }
+
+        public Message Message { get; set; }
+
+        ////Message Line
+        //public string messageContent
+        //{
+        //    get { return _txtMsgContent ?? ""; }
+        //    set { _txtMsgContent = value; }
+        //}
+        //private string _txtMsgContent;
         
+        ////Subject line
+        //public string messageSubject
+        //{
+        //    get { return _msgSubject ?? ""; }
+        //    set { _msgSubject = value; }
+        //}
+        //private string _msgSubject;
+
+
         //Cancel Message 
         private void OnCancel(object sender, EventArgs e)
         {
-                DialogResult = DialogResult.Cancel;
-                Close();
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
-        
+
         //Send Message
         private void OnSend(object sender, EventArgs e)
         {
 
+            if (String.IsNullOrEmpty(_txtMsgSubject.Text))
+            {
+                MessageBox.Show("Please enter on subject line", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var message = new Message()
+            {
+                MessageName = _txtMsgName.Text,
+                MessageEmailAddress = _txtMsgEmailAddress.Text,
+                MessageSubject = _txtMsgSubject.Text,
+                MessageContent = _txtMsgContent.Text,
+            };
+
+            Message = message;
+            DialogResult = DialogResult.OK;
+
+            Close();
+        }
+
+        //On form load validate name and email
+        private void MessageForm_Load(object sender, EventArgs e)
+        {
+            if (Contact != null)
+            {
+                _txtMsgName.Text = Contact.Name;
+                _txtMsgEmailAddress.Text = Contact.Email;
+            }
+
+            if (Message != null)
+            {
+                _txtMsgName.Text = Message.MessageName;
+                _txtMsgEmailAddress.Text = Message.MessageEmailAddress;
+            }
+
+            ValidateChildren();
         }
     }
 }

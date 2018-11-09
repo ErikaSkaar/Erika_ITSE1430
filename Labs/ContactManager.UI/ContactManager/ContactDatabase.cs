@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*Student:Erika Ballering
+ * Teacher: Michael Taylor
+ * Class: ITSE 1430"Intro to C#" 
+ * Program:Contact Manager*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,54 +11,56 @@ using System.Threading.Tasks;
 
 namespace ContactManager
 {
-    public class ContactDatabase
+    public abstract class ContactDatabase : IContactDatabase
     {
-        //Adds contact to database
+        //contact storage
         public void Add(Contact contact)
         {
-            _items.Add(contact);
+            if (contact == null)
+                return;
+
+            AddCore(contact);
         }
 
-        //If contact requested is valid will return
-        private Contact FindContact(string name)
+        //pulls get all core from 
+        public IEnumerable<Contact> GetAll()
         {
-            foreach (var contact in _items)
-            {
-                if (String.Compare(name, contact.Name, true) == 0)
-                    return contact;
-            };
-            return null;
+            return GetAllCore();
         }
 
-        //Edits Contact in database
+        //Finds and Edits contact by name
         public void Edit(string name, Contact contact)
         {
-            Remove(name);
-            Add(contact);
+            if (String.IsNullOrEmpty(name))
+                return;
+            if (contact == null)
+                return;
+
+            var existing = FindByName(name);
+            if (existing == null)
+                return;
+
+            EditCore(existing, contact);
         }
 
-        //Removes Contact in database
+        //Deletes contact by name
         public void Remove(string name)
         {
-            var contact = FindContact(name);
-            if (contact != null)
-                _items.Remove(contact);
+            if (String.IsNullOrEmpty(name))
+                return;
+
+            RemoveCore(name);
         }
 
-        //Rolls through index to find contact
-        public Contact[] GetAll()
-        {
-            var count = _items.Count;
+        
+        protected abstract void AddCore(Contact contact);
 
-            var temp = new Contact[count];
-            var index = 0;
-            foreach (var contact in _items)
-            {
-                temp[index++] = contact;
-            };
-            return temp;
-        }
+        protected abstract void EditCore(Contact oldContact, Contact newContact);
 
-        private List<Contact> _items = new List<Contact>();
+        protected abstract Contact FindByName(string name);
+
+        protected abstract IEnumerable<Contact> GetAllCore();
+
+        protected abstract void RemoveCore(string name);
     }
-}
+  }
