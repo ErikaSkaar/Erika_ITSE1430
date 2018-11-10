@@ -8,10 +8,11 @@ namespace ContactManager
 {
     public class MemoryContactDatabase : ContactDatabase
     {
-        //working with Lambda because thats the reference from the MovieDatabase notes
+        //addcore from memorycontact database
         protected override void AddCore(Contact contact)
-        => _items.Add(contact);
-
+        {     
+               _items.Add(contact);
+        }   
         //Finds the contact, if any, by name and returns it
         protected override Contact FindByName(string name)
         {

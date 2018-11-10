@@ -22,7 +22,7 @@ namespace ContactManager
             AddCore(contact);
         }
 
-        //pulls get all core from 
+        //pulls get all  
         public IEnumerable<Contact> GetAll()
         {
             return GetAllCore();

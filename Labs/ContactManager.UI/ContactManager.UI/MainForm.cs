@@ -61,7 +61,7 @@ namespace ContactManager.UI
             if (form.ShowDialog(this) == DialogResult.Cancel)
                 return;
 
-            //_txtMsgContent.Send(form.Message);
+            //_txtMsgContent.Send(form.Message);       <-------cannot find txtMsgContent
         }
 
         //Adding New Contact
@@ -138,7 +138,7 @@ namespace ContactManager.UI
             var contacts = _database.GetAll();
 
             _listMainLeft.Items.Clear();
-           // _listMainLeft.Items.AddRange(contacts);
+           // _listMainLeft.Items.AddRange(contacts);      <------ Does not like (contacts);
         }
 
         //Refresh messages on right
