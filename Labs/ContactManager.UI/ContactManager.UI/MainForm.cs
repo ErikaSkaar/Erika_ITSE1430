@@ -22,7 +22,6 @@ namespace ContactManager.UI
             InitializeComponent();
         }
 
-
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -61,7 +60,7 @@ namespace ContactManager.UI
             if (form.ShowDialog(this) == DialogResult.Cancel)
                 return;
 
-            //_txtMsgContent.Send(form.Message);       <-------cannot find txtMsgContent
+            _txtMsgContent.Send(form.Message);     //  <-------cannot find txtMsgContent
         }
 
         //Adding New Contact

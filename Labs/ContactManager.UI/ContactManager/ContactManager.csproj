@@ -51,6 +51,7 @@
     <Compile Include="MemoryMessageDatabase.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="MessageSendDatabase.cs" />
+    <Compile Include="ObjectValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

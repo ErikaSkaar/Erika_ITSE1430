@@ -24,6 +24,7 @@ namespace ContactManager.UI
 
         //Contact Class
         public Contact Contact { get; set; }
+      
 
         //Cancel Add Contact
         private void OnCancel(object sender, EventArgs e)
@@ -45,13 +46,13 @@ namespace ContactManager.UI
                 Email = _txtEmailAddress.Text,
             };
 
-            //var results = ObjectValidator.Validate(contact);                <---- No longer likes ObjectValidator
+            var results = ObjectValidator.Validate(contact);               // < ----No longer likes ObjectValidator
 
-            //foreach (var result in results)
-            //{
-            //    MessageBox.Show(this, result.ErrorMessage, "Validation Failed", MessageBoxButtons.OK);
-            //    return;
-            //};
+            foreach (var result in results)
+            {
+                MessageBox.Show(this, result.ErrorMessage, "Validation Failed", MessageBoxButtons.OK);
+                return;
+            };
 
             Contact = contact;
             DialogResult = DialogResult.OK;
