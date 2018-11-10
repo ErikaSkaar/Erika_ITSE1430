@@ -45,13 +45,13 @@ namespace ContactManager.UI
                 Email = _txtEmailAddress.Text,
             };
 
-            var results = ObjectValidator.Validate(contact);
+            //var results = ObjectValidator.Validate(contact);
 
-            foreach (var result in results)
-            {
-                MessageBox.Show(this, result.ErrorMessage, "Validation Failed", MessageBoxButtons.OK);
-                return;
-            };
+            //foreach (var result in results)
+            //{
+            //    MessageBox.Show(this, result.ErrorMessage, "Validation Failed", MessageBoxButtons.OK);
+            //    return;
+            //};
 
             Contact = contact;
             DialogResult = DialogResult.OK;

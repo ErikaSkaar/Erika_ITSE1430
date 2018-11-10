@@ -61,8 +61,8 @@ namespace ContactManager.UI
             if (form.ShowDialog(this) == DialogResult.Cancel)
                 return;
 
-            _txtMsgContent.Send(form.Message);
-        } //  MessageContent = _txtMsgContent
+            //_txtMsgContent.Send(form.Message);
+        }
 
         //Adding New Contact
         private void OnNewContact(object sender, EventArgs e)
@@ -138,7 +138,7 @@ namespace ContactManager.UI
             var contacts = _database.GetAll();
 
             _listMainLeft.Items.Clear();
-            _listMainLeft.Items.AddRange(contacts);
+           // _listMainLeft.Items.AddRange(contacts);
         }
 
         //Refresh messages on right

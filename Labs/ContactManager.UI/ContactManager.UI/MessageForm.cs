@@ -27,23 +27,6 @@ namespace ContactManager.UI
 
         public Message Message { get; set; }
 
-        ////Message Line
-        //public string messageContent
-        //{
-        //    get { return _txtMsgContent ?? ""; }
-        //    set { _txtMsgContent = value; }
-        //}
-        //private string _txtMsgContent;
-        
-        ////Subject line
-        //public string messageSubject
-        //{
-        //    get { return _msgSubject ?? ""; }
-        //    set { _msgSubject = value; }
-        //}
-        //private string _msgSubject;
-
-
         //Cancel Message 
         private void OnCancel(object sender, EventArgs e)
         {
