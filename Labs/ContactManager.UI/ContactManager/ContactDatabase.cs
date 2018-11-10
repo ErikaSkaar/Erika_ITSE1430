@@ -36,11 +36,11 @@ namespace ContactManager
             if (contact == null)
                 return;
 
-            var existing = FindByName(name);
-            if (existing == null)
+            var existingContact = FindByName(name);
+            if (existingContact == null)
                 return;
 
-            EditCore(existing, contact);
+            EditCore(existingContact, contact);
         }
 
         //Deletes contact by name

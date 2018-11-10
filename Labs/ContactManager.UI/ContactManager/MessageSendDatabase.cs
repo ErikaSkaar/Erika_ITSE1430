@@ -8,6 +8,7 @@ namespace ContactManager
 {
     public abstract class MessageSendDatabase : IMessageServices
     {
+        //Email validator 
        bool IsValidEmail (string source)
         {
             try
@@ -19,6 +20,7 @@ namespace ContactManager
             return false;
         }
 
+        //retrives message from MMD
         public void Send(Message message)
         {
             if (message == null)

@@ -45,7 +45,7 @@ namespace ContactManager.UI
                 Email = _txtEmailAddress.Text,
             };
 
-            //var results = ObjectValidator.Validate(contact);    <---- No longer likes ObjectValidator
+            //var results = ObjectValidator.Validate(contact);                <---- No longer likes ObjectValidator
 
             //foreach (var result in results)
             //{
