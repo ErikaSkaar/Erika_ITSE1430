@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Forms;
 
 namespace ContactManager.UI
@@ -46,7 +47,7 @@ namespace ContactManager.UI
                 Email = _txtEmailAddress.Text,
             };
 
-            var results = ObjectValidator.Validate(contact);               // < ----No longer likes ObjectValidator
+            var results = ObjectValidator.Validate(contact);  
 
             foreach (var result in results)
             {
