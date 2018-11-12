@@ -3,6 +3,7 @@
  */
 using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Forms;
 
 namespace Nile.Windows
@@ -56,10 +57,8 @@ namespace Nile.Windows
         private void OnSave ( object sender, EventArgs e )
         {
             if (!ValidateChildren())
-            {
                 return;
-            };
-
+            
             var product = new Product()
             {
                 Id = Product?.Id ?? 0,
@@ -68,15 +67,20 @@ namespace Nile.Windows
                 Price = GetPrice(_txtPrice),
                 IsDiscontinued = _chkDiscontinued.Checked,
             };
-
             //TODO: Validate product
-
+               var results = Validator.Validate(product);
+            foreach (var result in results)
+            {
+                MessageBox.Show(this, result.ErrorMessage, "Validation Failed", MessageBoxButtons.OK);
+                return;
+            };
+            
             Product = product;
             DialogResult = DialogResult.OK;
             Close();
         }
 
-        private void OnValidatingName ( object sender, CancelEventArgs e )
+            private void OnValidatingName ( object sender, CancelEventArgs e )
         {
             var tb = sender as TextBox;
             if (String.IsNullOrEmpty(tb.Text))
