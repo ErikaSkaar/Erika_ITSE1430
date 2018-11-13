@@ -8,7 +8,7 @@ namespace ITSE1430.MovieLib
 {
     /// <summary>Manages a set of movies.</summary>
     public abstract class MovieDatabase : IMovieDatabase
-    {
+    {  
         /// <summary>Adds a movie to the database.</summary>
         /// <param name="movie">The movie to add.</param>
         public void Add( Movie movie )
