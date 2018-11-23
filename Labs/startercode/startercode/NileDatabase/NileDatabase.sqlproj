@@ -71,4 +71,7 @@
   <ItemGroup>
     <PostDeploy Include="InitializeProducts.PostDeployment.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+  </ItemGroup>
 </Project>

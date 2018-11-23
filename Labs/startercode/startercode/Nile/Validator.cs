@@ -9,12 +9,12 @@ namespace Nile
 {
     public static class Validator
     {
-        public static IEnumerable<ValidationResult> Validate ( IValidatableObject value )
+        public static IEnumerable<ValidationResult> TryValidate ( IValidatableObject value )
         {
             var result = new List<ValidationResult>();
 
             var context = new ValidationContext(value);
-
+            
             Validator.TryValidateObject(value, context, result, true);
 
             return result;

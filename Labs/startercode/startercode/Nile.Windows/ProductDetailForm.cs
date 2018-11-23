@@ -68,7 +68,9 @@ namespace Nile.Windows
                 IsDiscontinued = _chkDiscontinued.Checked,
             };
             //TODO: Validate product
-               var results = Validator.Validate(product);
+         
+            var results = Validator.TryValidate(product);
+
             foreach (var result in results)
             {
                 MessageBox.Show(this, result.ErrorMessage, "Validation Failed", MessageBoxButtons.OK);
@@ -80,7 +82,7 @@ namespace Nile.Windows
             Close();
         }
 
-            private void OnValidatingName ( object sender, CancelEventArgs e )
+        private void OnValidatingName ( object sender, CancelEventArgs e )
         {
             var tb = sender as TextBox;
             if (String.IsNullOrEmpty(tb.Text))
