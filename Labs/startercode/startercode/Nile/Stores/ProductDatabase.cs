@@ -14,12 +14,20 @@ namespace Nile.Stores
         /// <returns>The added product.</returns>
         public Product Add ( Product product )
         {
-            //TODO: Check arguments
+                                     //TODO: Check arguments
+                                    //TODO: Validate product
+            if (product == null)
+                throw new ArgumentNullException("product");
+            ObjectValidator.Validate(product);
 
-            //TODO: Validate product
-
-            //Emulate database by storing copy
-            return AddCore(product);
+            try
+            {
+                AddCore(product);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Add failed", e);
+            };
         }
 
         /// <summary>Get a specific product.</summary>
@@ -43,7 +51,7 @@ namespace Nile.Stores
         public void Remove ( int id )
         {
             //TODO: Check arguments
-
+            
             RemoveCore(id);
         }
         
@@ -55,9 +63,9 @@ namespace Nile.Stores
             //TODO: Check arguments
 
             //TODO: Validate product
-
-            //Get existing product
-            var existing = GetCore(product.Id);
+          
+                //Get existing product
+                var existing = GetCore(product.Id);
 
             return UpdateCore(existing, product);
         }

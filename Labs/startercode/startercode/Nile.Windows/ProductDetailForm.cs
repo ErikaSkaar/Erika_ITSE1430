@@ -68,8 +68,8 @@ namespace Nile.Windows
                 IsDiscontinued = _chkDiscontinued.Checked,
             };
             //TODO: Validate product
-         
-            var results = Validator.TryValidate(product);
+
+            var results = ObjectValidator.TryValidate(product);
 
             foreach (var result in results)
             {

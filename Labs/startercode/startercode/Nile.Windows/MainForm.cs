@@ -36,13 +36,20 @@ namespace Nile.Windows
         {
             var child = new ProductDetailForm("Product Details");
             if (child.ShowDialog(this) != DialogResult.OK)
-                return;
-
-            //TODO: Handle errors
+                return;             
+                                                                       //TODO: Handle errors
             //Save product
-            _database.Add(child.Product);
-            UpdateList();
-        }
+            try
+            {
+                _database.Add(child.Product);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            };
+                UpdateList();
+            }
 
         private void OnProductEdit( object sender, EventArgs e )
         {
@@ -106,7 +113,13 @@ namespace Nile.Windows
 
             //TODO: Handle errors
             //Delete product
+            try
+            { 
             _database.Remove(product.Id);
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            };
             UpdateList();
         }
 
@@ -117,10 +130,17 @@ namespace Nile.Windows
             if (child.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            //TODO: Handle errors
+                                                                       //TODO: Handle errors
             //Save product
+            try
+            { 
             _database.Update(child.Product);
-            UpdateList();
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            };
+
+             UpdateList();
         }
 
         private Product GetSelectedProduct ()
