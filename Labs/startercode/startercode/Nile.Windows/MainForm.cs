@@ -37,7 +37,7 @@ namespace Nile.Windows
             var child = new ProductDetailForm("Product Details");
             if (child.ShowDialog(this) != DialogResult.OK)
                 return;             
-                                                                       //TODO: Handle errors
+            //***
             //Save product
             try
             {
@@ -111,7 +111,7 @@ namespace Nile.Windows
                                 "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
 
-            //TODO: Handle errors
+            //***
             //Delete product
             try
             { 
@@ -130,7 +130,7 @@ namespace Nile.Windows
             if (child.ShowDialog(this) != DialogResult.OK)
                 return;
 
-                                                                       //TODO: Handle errors
+            //***
             //Save product
             try
             { 
@@ -153,10 +153,15 @@ namespace Nile.Windows
 
         private void UpdateList ()
         {
-            //TODO: Handle errors
-
-            _bsProducts.DataSource = _database.GetAll();
-        }
+            //***
+            try
+            {
+                _bsProducts.DataSource = _database.GetAll();
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            };
+}
 
         private readonly IProductDatabase _database = new Nile.Stores.MemoryProductDatabase();
         #endregion
@@ -167,4 +172,8 @@ namespace Nile.Windows
             if (form.ShowDialog(this) == DialogResult.Cancel) return;
         }
     }
+
+    //error ***
+    //validate**
+    //argument*
 }

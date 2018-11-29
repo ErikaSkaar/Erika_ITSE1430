@@ -16,18 +16,9 @@ namespace Nile.Stores
         {
                                      //TODO: Check arguments
                                     //TODO: Validate product
-            if (product == null)
-                throw new ArgumentNullException("product");
-            ObjectValidator.Validate(product);
-
-            try
-            {
-                AddCore(product);
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Add failed", e);
-            };
+       
+              return  AddCore(product);
+     
         }
 
         /// <summary>Get a specific product.</summary>
@@ -83,4 +74,8 @@ namespace Nile.Stores
         protected abstract Product AddCore( Product product );
         #endregion
     }
+
+    //error ***
+    //validate**
+    //argument*
 }

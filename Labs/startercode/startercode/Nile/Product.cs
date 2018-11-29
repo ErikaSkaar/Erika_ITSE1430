@@ -39,16 +39,17 @@ namespace Nile
             return Name;
         }
 
+        //story 2-product IValidatableObject
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (String.IsNullOrEmpty(Name))
                 yield return new ValidationResult("Name is required.",
                                 new[] { nameof(Name) });
-            if (Id >= 0)
+            if (Id < 0)
                 yield return new ValidationResult("Id must be >= 0",
                                 new[] { nameof(Id) });
 
-            if (Price >= 0)
+            if (Price < 0)
                 yield return new ValidationResult("Price must be >= 0",
                                 new[] { nameof(Price) });
         }
@@ -59,4 +60,7 @@ namespace Nile
         private string _description;
         #endregion
     }
+    //error ***
+    //validate**
+    //argument*
 }
