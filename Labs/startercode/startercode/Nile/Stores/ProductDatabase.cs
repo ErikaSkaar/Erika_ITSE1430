@@ -3,6 +3,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Nile.Stores
 {
@@ -14,10 +15,13 @@ namespace Nile.Stores
         /// <returns>The added product.</returns>
         public Product Add ( Product product )
         {
-                                     //TODO: Check arguments
-                                    //TODO: Validate product
-       
-              return  AddCore(product);
+            //*
+            //**
+            if (product == null)
+                throw new ArgumentNullException("product");
+            ObjectValidator.Validate(product);
+
+            return  AddCore(product);
      
         }
 
