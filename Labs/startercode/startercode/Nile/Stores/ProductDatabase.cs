@@ -29,7 +29,9 @@ namespace Nile.Stores
         /// <returns>The product, if it exists.</returns>
         public Product Get ( int id )
         {
-            //TODO: Check arguments
+            //*
+            if (id < 0)
+                throw new ArgumentNullException("Id cannot be empty");
 
             return GetCore(id);
         }
@@ -55,12 +57,13 @@ namespace Nile.Stores
         /// <returns>The updated product.</returns>
         public Product Update ( Product product )
         {
-            //TODO: Check arguments
-
-            //TODO: Validate product
-          
+            //*
+            //**
                 //Get existing product
                 var existing = GetCore(product.Id);
+            if (product == null)
+                throw new ArgumentNullException("product");
+            ObjectValidator.Validate(product);
 
             return UpdateCore(existing, product);
         }
