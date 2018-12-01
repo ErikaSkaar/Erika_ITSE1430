@@ -49,14 +49,9 @@ namespace Nile.Stores
             var product = FindProduct(id);
             if (product != null)
                 _products.Remove(product);
-
             //*
             else if (product == null)
-            {
-                throw new System.ArgumentNullException("parameter cannot be null");
-
-            }
-             
+                throw new System.ArgumentNullException("Product cannot be null");
         }
 
         /// <summary>Updates a product.</summary>
