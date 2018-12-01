@@ -47,8 +47,9 @@ namespace Nile.Stores
         /// <param name="id">The product to remove.</param>
         public void Remove ( int id )
         {
-            //TODO: Check arguments
-            
+            //*
+            if (id < 0)
+                throw new ArgumentNullException("Id cannot be empty");
             RemoveCore(id);
         }
         
