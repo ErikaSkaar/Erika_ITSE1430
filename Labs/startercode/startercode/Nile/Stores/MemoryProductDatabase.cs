@@ -64,12 +64,13 @@ namespace Nile.Stores
             _products.Remove(existing);
 
             var newProduct = CopyProduct(product);
+
+            if (product != null)
             _products.Add(newProduct);
 
-            /*else if ()
-            {
-                throw new Exception("duplicate product");
-            }*/
+           /*else if ( )
+                throw new Exception("duplicate product");*/
+            
 
             return CopyProduct(newProduct);
         }
@@ -101,4 +102,7 @@ namespace Nile.Stores
         private List<Product> _products = new List<Product>();
         private int _nextId = 1;
     }
+    //error ***
+    //validate**
+    //argument*
 }

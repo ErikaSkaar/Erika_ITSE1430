@@ -8,6 +8,18 @@ namespace Nile.Stores.Sql
 {
     public class SqlProductDatabase : ProductDatabase
     {
+        public SqlProductDatabase(string connectionString)
+        {
+            if (connectionString == null)
+                throw new ArgumentNullException(nameof(connectionString));
+            if (connectionString == "")
+                throw new ArgumentException("Connection string cannot be empty."
+                            , nameof(connectionString));
+
+            _connectionString = connectionString;
+        }
+        private readonly string _connectionString;
+
         protected override Product AddCore(Product product)
         {
             throw new NotImplementedException();
