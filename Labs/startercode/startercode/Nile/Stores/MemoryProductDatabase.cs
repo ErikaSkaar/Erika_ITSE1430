@@ -49,19 +49,32 @@ namespace Nile.Stores
             var product = FindProduct(id);
             if (product != null)
                 _products.Remove(product);
+
+            //*
+            else if (product == null)
+            {
+                throw new System.ArgumentNullException("parameter cannot be null");
+
+            }
+             
         }
 
         /// <summary>Updates a product.</summary>
         /// <param name="product">The product to update.</param>
         /// <returns>The updated product.</returns>
-        protected override Product UpdateCore ( Product existing, Product product )
+        protected override Product UpdateCore(Product existing, Product product)
         {
             //Replace 
             existing = FindProduct(product.Id);
             _products.Remove(existing);
-            
+
             var newProduct = CopyProduct(product);
             _products.Add(newProduct);
+
+            /*else if ()
+            {
+                throw new Exception("duplicate product");
+            }*/
 
             return CopyProduct(newProduct);
         }

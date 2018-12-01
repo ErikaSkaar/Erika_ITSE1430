@@ -111,7 +111,7 @@ namespace Nile.Windows
             if (Decimal.TryParse(control.Text, out var price))
                 return price;
 
-            //Validate price            
+            //**           
             return -1;
         }
         #endregion
