@@ -2,7 +2,10 @@
  * ITSE 1430
  */
 using System;
+using System.Configuration;
 using System.Windows.Forms;
+
+using Nile.Stores.Sql;
 
 namespace Nile.Windows
 {
@@ -22,6 +25,8 @@ namespace Nile.Windows
 
             _gridProducts.AutoGenerateColumns = false;
 
+            _database = LoadDatabase();
+
             UpdateList();
         }
 
@@ -35,32 +40,19 @@ namespace Nile.Windows
         private void OnProductAdd( object sender, EventArgs e )
         {
             var child = new ProductDetailForm("Product Details");
-            if (child.ShowDialog(this) != DialogResult.OK)
-                return;
-            //***
-            //Save product
-            while (_database.ExistingProduct(child.Product.Name))
+
+            do
             {
-                var temp = new ProductDetailForm("Product Details");
-                temp.Product = child.Product;
-
-                MessageBox.Show("Cannot duplicate names", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                if (child.ShowDialog(this) == DialogResult.Cancel)
+                if (child.ShowDialog(this) != DialogResult.OK)
                     return;
-            }
 
-            try
-            {
-                _database.Add(child.Product);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error",
-                              MessageBoxButtons.OK, MessageBoxIcon.Error);
-            };
-                UpdateList();
-            }
+                if (TryAction("Add Failed", () => _database.Add(child.Product)))
+                    break;
+
+            } while (true);
+
+            UpdateList();
+        }
 
         private void OnProductEdit( object sender, EventArgs e )
         {
@@ -122,36 +114,25 @@ namespace Nile.Windows
                                 "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
 
-            //***
-            //Delete product
-            try
-            { 
-            _database.Remove(product.Id);
-            } catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            };
-            UpdateList();
+            if (TryAction("Delete Failed", () => _database.Remove(product.Id)))
+                UpdateList();
         }
 
         private void EditProduct ( Product product )
         {
             var child = new ProductDetailForm("Product Details");
-            child.Product = product;
-            if (child.ShowDialog(this) != DialogResult.OK)
-                return;
 
-            //***
-            //Save product
-            try
-            { 
-            _database.Update(child.Product);
-            } catch (Exception ex)
+            do
             {
-                MessageBox.Show(ex.Message);
-            };
+                child.Product = product;
+                if (child.ShowDialog(this) != DialogResult.OK)
+                    return;
 
-             UpdateList();
+                if (TryAction("Update Failed", () => _database.Update(child.Product)))
+                    break;
+            } while (true);
+
+            UpdateList();
         }
 
         private Product GetSelectedProduct ()
@@ -162,29 +143,35 @@ namespace Nile.Windows
             return null;
         }
 
-        private void UpdateList ()
+        private IProductDatabase LoadDatabase ()
         {
-            //***
+            var connString = ConfigurationManager.ConnectionStrings["ProductDatabase"];
+            if (connString == null)
+                throw new InvalidOperationException("Database connection string not found.");
+
+            return new SqlProductDatabase(connString.ConnectionString);
+        }
+
+        private bool TryAction ( string title, Action action )
+        {
             try
             {
-                _bsProducts.DataSource = _database.GetAll();
-            } catch (Exception ex)
+                action();
+                return true;
+            } catch (Exception e)
             {
-                MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, e.Message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
             };
-}
 
-        private readonly IProductDatabase _database = new Nile.Stores.MemoryProductDatabase();
-        #endregion
-
-        private void OnAbout(object sender, EventArgs e)
-        {
-            var form = new AboutForm();
-            if (form.ShowDialog(this) == DialogResult.Cancel) return;
+            return false;
         }
-    }
 
-    //error ***
-    //validate**
-    //argument*
+        private void UpdateList ()
+        {
+            TryAction("Load Failed", () => _bsProducts.DataSource = _database.GetAll());
+        }
+
+        private IProductDatabase _database;
+        #endregion
+    }
 }

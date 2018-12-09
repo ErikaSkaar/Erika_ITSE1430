@@ -67,11 +67,7 @@ namespace Nile.Stores
 
             if (product != null)
             _products.Add(newProduct);
-
-           /*else if ( )
-                throw new Exception("duplicate product");*/
             
-
             return CopyProduct(newProduct);
         }
         
@@ -97,6 +93,11 @@ namespace Nile.Stores
             };
 
             return null;
+        }
+
+        public override bool ExistingProduct(string name)
+        {
+            throw new NotImplementedException();
         }
 
         private List<Product> _products = new List<Product>();

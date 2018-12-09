@@ -55,5 +55,10 @@ namespace Nile.Stores.Sql
 
             return sql?.GetId() ?? 0;
         }
+
+        public override bool ExistingProduct(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
