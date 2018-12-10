@@ -23,49 +23,19 @@ namespace EventPlanner.Mvc.Controllers
         }
 
         [HttpGet]
-        public ActionResult Create()
-        {
-            var model = new Model();
-
-            return View(model);
-        }
-
-        [HttpGet]
         public ActionResult Details(int id)
         {
             var item = _database.GetAll().FirstOrDefault(i => i.Id == id);
+            if (item == null)
+                return HttpNotFound();
 
             return View(new Model(item));
         }
 
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Create()
         {
-            var item = _database.GetAll().FirstOrDefault(i => i.Id == id);
-
-            return View(new Model(item));
-        }
-
-        [HttpPost]
-        public ActionResult Edit(Model model)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    var item = model.ToDomain();
-
-                    var existing = _database.GetAll().FirstOrDefualt(i => i.Id == model.Id);
-
-                    _database.Edit(existing.Name, item);
-
-                    return RedirectToAction("Index");
-                }
-                catch (Exception e)
-                {
-                    ModelState.AddModelError("", e.Message);
-                };
-            };
+            var model = new Model();
 
             return View(model);
         }
@@ -81,7 +51,7 @@ namespace EventPlanner.Mvc.Controllers
 
                     _database.Add(item);
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("My");
                 }
                 catch (Exception e)
                 {
@@ -91,6 +61,41 @@ namespace EventPlanner.Mvc.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var item = _database.GetAll().FirstOrDefault(i => i.Id == id);
+            if (item == null)
+                return HttpNotFound();
+            return View(new Model(item));
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Model model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var item = model.ToDomain();
+                    var existing = _database.GetAll().FirstOrDefualt(i => i.Id == model.Id);
+                    if (existing == null)
+                        return HttpNotFound();
+
+                    _database.Edit(existing.Name, item);
+
+                    return RedirectToAction("My");
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError("", e.Message);
+                };
+            };
+
+            return View(model);
+        }
+
         [HttpGet]
         public ActionResult Delete(int id)
         {
@@ -111,7 +116,7 @@ namespace EventPlanner.Mvc.Controllers
 
                 _database.Remove(existing.Name);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("My");
             }
             catch (Exception e)
             {

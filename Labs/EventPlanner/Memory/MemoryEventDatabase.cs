@@ -8,9 +8,9 @@ using System.Linq;
 namespace EventPlanner.Memory
 {
     /// <summary>Provides an implementation of <see cref="IEventDatabase"/> backed by memory.</summary>
-    public class MemoryEventDatabase : IEventDatabase
+    public class MemoryEventDatabase 
     {
-        public ScheduledEvent Add ( ScheduledEvent evt )
+        public ScheduledEvent Add(ScheduledEvent evt)
         {
             Verify.ArgumentIsValidAndNotNull(nameof(evt), evt);
 
@@ -27,9 +27,9 @@ namespace EventPlanner.Memory
             return evt;
         }
 
-        public ScheduledEvent Get ( int id ) => CloneEvent(_items.FirstOrDefault(i => i.Id == id));
+        public ScheduledEvent Get(int id) => CloneEvent(_items.FirstOrDefault(i => i.Id == id));
 
-        public IEnumerable<ScheduledEvent> GetAll ( EventCriteria criteria )
+        public IEnumerable<ScheduledEvent> GetAll(EventCriteria criteria)
         {
             if (criteria.IncludePrivate || criteria.IncludePublic)
             {
@@ -49,7 +49,7 @@ namespace EventPlanner.Memory
             };
         }
 
-        public void Remove ( int id )
+        public void Remove(int id)
         {
             Verify.ArgumentIsGreaterThan(nameof(id), id, 0);
 
@@ -58,7 +58,7 @@ namespace EventPlanner.Memory
                 _items.Remove(item);
         }
 
-        public ScheduledEvent Update ( int id, ScheduledEvent evt )
+        public ScheduledEvent Update(int id, ScheduledEvent evt)
         {
             Verify.ArgumentIsGreaterThan(nameof(id), id, 0);
             var item = FindById(id, true);
@@ -75,7 +75,7 @@ namespace EventPlanner.Memory
 
         #region Private Members
 
-        private ScheduledEvent CloneEvent ( ScheduledEvent source )
+        private ScheduledEvent CloneEvent(ScheduledEvent source)
         {
             if (source == null)
                 return null;
@@ -85,7 +85,7 @@ namespace EventPlanner.Memory
             return item;
         }
 
-        private void CopyEvent ( ScheduledEvent target, ScheduledEvent source )
+        private void CopyEvent(ScheduledEvent target, ScheduledEvent source)
         {
             target.Id = source.Id;
             target.Name = source.Name;
@@ -95,7 +95,7 @@ namespace EventPlanner.Memory
             target.IsPublic = source.IsPublic;
         }
 
-        private ScheduledEvent FindById ( int id, bool throwIfNotExists )
+        private ScheduledEvent FindById(int id, bool throwIfNotExists)
         {
             var item = _items.FirstOrDefault(i => i.Id == id);
             if (item == null && throwIfNotExists)
@@ -104,7 +104,7 @@ namespace EventPlanner.Memory
             return item;
         }
 
-        private ScheduledEvent FindByName ( string name ) => _items.FirstOrDefault(i => String.Compare(i.Name, name, true) == 0);
+        private ScheduledEvent FindByName(string name) => _items.FirstOrDefault(i => String.Compare(i.Name, name, true) == 0);
 
         private readonly List<ScheduledEvent> _items = new List<ScheduledEvent>();
         private int _id = 1;
