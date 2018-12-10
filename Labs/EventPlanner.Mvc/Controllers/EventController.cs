@@ -19,7 +19,7 @@ namespace EventPlanner.Mvc.Controllers
         public ActionResult My()
         {
             var items = _database.GetAll();
-            
+            //if (items !== IsPublic)
             return View(items.Select(i => new Model(i)));
         }
 
@@ -27,7 +27,7 @@ namespace EventPlanner.Mvc.Controllers
         public ActionResult MyPublic()
         {
             var items = _database.GetAll();
-
+            //if (items == IsPublic)
             return View(items.Select(i => new Model(i)));
         }
 
