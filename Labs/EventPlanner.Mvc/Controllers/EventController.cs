@@ -19,6 +19,15 @@ namespace EventPlanner.Mvc.Controllers
         public ActionResult My()
         {
             var items = _database.GetAll();
+            
+            return View(items.Select(i => new Model(i)));
+        }
+
+        [HttpGet]
+        public ActionResult MyPublic()
+        {
+            var items = _database.GetAll();
+
             return View(items.Select(i => new Model(i)));
         }
 

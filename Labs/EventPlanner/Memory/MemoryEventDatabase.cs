@@ -8,7 +8,7 @@ using System.Linq;
 namespace EventPlanner.Memory
 {
     /// <summary>Provides an implementation of <see cref="IEventDatabase"/> backed by memory.</summary>
-    public class MemoryEventDatabase 
+    public class MemoryEventDatabase : IEventDatabase
     {
         public ScheduledEvent Add(ScheduledEvent evt)
         {
@@ -105,6 +105,21 @@ namespace EventPlanner.Memory
         }
 
         private ScheduledEvent FindByName(string name) => _items.FirstOrDefault(i => String.Compare(i.Name, name, true) == 0);
+
+        public void Edit(object name, ScheduledEvent item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object GetAll()
+        {
+            throw new NotImplementedException();
+        }
 
         private readonly List<ScheduledEvent> _items = new List<ScheduledEvent>();
         private int _id = 1;

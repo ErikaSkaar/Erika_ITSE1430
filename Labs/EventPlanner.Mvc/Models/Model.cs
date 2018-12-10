@@ -13,7 +13,7 @@ namespace EventPlanner.Mvc.Models
             {
             }
 
-            //Using simple mapping layer using a constructor
+            //mapping layer using a constructor
             public Model(EventPlanner.ScheduledEvent item)
             {
                 if (item != null)
@@ -27,11 +27,12 @@ namespace EventPlanner.Mvc.Models
                 };
             }
 
-            //Using a simple mapping layer using a method
+            //mapping layer using a method
             public EventPlanner.ScheduledEvent ToDomain()
             {
                 return new EventPlanner.ScheduledEvent()
                 {
+                    Id = Id,
                     Name = Name,
                     Description = Description,
                     StartDate = StartDate,
