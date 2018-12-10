@@ -100,7 +100,8 @@ namespace EventPlanner.Mvc.Controllers
         public ActionResult Delete(int id)
         {
             var item = _database.GetAll().FirstOrDefault(i => i.Id == id);
-
+            if (item == null)
+                return HttpNotFound();
 
             return View(new Model(item));
         }
