@@ -41,8 +41,7 @@ namespace EventPlanner.Mvc.Models
                 };
             }
 
-            //Exposing public auto properties (with validation) for
-            //data needed by view
+            //Exposing public auto properties
             [Required(AllowEmptyStrings = false)]
             public string Name { get; set; }
 

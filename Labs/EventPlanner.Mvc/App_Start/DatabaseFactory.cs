@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace EventPlanner.Mvc.App_Start
 {
-    public class DatabaseFactory
+    public class DatabaseFactory  
     {
         static DatabaseFactory()
         {
@@ -23,10 +23,6 @@ namespace EventPlanner.Mvc.App_Start
             Database = Database;
         }
 
-        IEnumerable<ScheduledEvent> GetAll()
-        {
-            return GetAll();
-        }
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

@@ -105,22 +105,26 @@ namespace EventPlanner.Memory
         }
 
         private ScheduledEvent FindByName(string name) => _items.FirstOrDefault(i => String.Compare(i.Name, name, true) == 0);
-
         public void Edit(object name, ScheduledEvent item)
         {
             throw new NotImplementedException();
         }
-
+        public object get(object id)
+        {
+            throw new NotImplementedException();
+        }
         public void Remove(string name)
         {
             throw new NotImplementedException();
         }
-
         public object GetAll()
         {
             throw new NotImplementedException();
         }
-
+        public void Remove(object name)
+        {
+            throw new NotImplementedException();
+        }
         private readonly List<ScheduledEvent> _items = new List<ScheduledEvent>();
         private int _id = 1;
         #endregion

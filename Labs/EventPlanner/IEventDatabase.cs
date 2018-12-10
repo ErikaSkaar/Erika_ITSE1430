@@ -41,6 +41,7 @@ namespace EventPlanner
         /// The event cannot be found.
         /// </exception>
         ScheduledEvent Update ( int id, ScheduledEvent evt );
+        object get(object id);
 
         /// <summary>Removes an event.</summary>
         /// <param name="id">The event to remove.</param>
@@ -48,5 +49,6 @@ namespace EventPlanner
         void Remove ( int id );
         void Remove(string name);
         object GetAll();
+        void Remove(object name);
     }
 }

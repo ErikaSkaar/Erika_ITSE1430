@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EventPlanner;
+using EventPlanner.Mvc.App_Start;
 
 namespace EventPlanner.Mvc.Controllers
 {
@@ -88,7 +89,7 @@ namespace EventPlanner.Mvc.Controllers
                 try
                 {
                     var item = model.ToDomain();
-                    var existing = _database.GetAll().FirstOrDefualt(i => i.Id == model.Id);
+                    var existing = _database.GetAll().FirstOrDefault(i => i.Id == id);
                     if (existing == null)
                         return HttpNotFound();
 
@@ -120,7 +121,7 @@ namespace EventPlanner.Mvc.Controllers
         {
             try
             {
-                var existing = _database.GetAll().FirstOrDefault(i => i.Id == model.Id);
+                var existing = _database.GetAll().FirstOrDefault(i => i.Id == id);
                 if (existing == null)
                     return HttpNotFound();
 
@@ -136,5 +137,6 @@ namespace EventPlanner.Mvc.Controllers
         }
 
         private readonly IEventDatabase _database;
+
     }
 }
